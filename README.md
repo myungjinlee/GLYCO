@@ -15,3 +15,5 @@ python3 glycan_coverage.py origin_pdbname cutoff ep epitope_list
 ex) python3 glycan_coverag.py origin_frame_1.pdb 30 ep ep_1.txt
 
 PDB coordinate should follow standard format. Please refer http://www.wwpdb.org/documentation/file-format-content/format33/sect9.html
+
+Protein residue should be in the following set. 'ALA','ARG','ASN','ASP','CYS','GLN','GLU','GLY','HSD','HIS','HIE','ILE','LEU','LYS','MET','PHE','PRO','SER','THR','TRP','TYR','VAL'
