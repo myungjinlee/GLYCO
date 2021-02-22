@@ -13,3 +13,5 @@ ex) python3 glycan_coverage.py origin_frame_1.pdb 30 all frame_1.pdb
 python3 glycan_coverage.py origin_pdbname cutoff ep epitope_list
 
 ex) python3 glycan_coverag.py origin_frame_1.pdb 30 ep ep_1.txt
+
+PDB coordinate should follow standard format. Please refer http://www.wwpdb.org/documentation/file-format-content/format33/sect9.html
