@@ -1,6 +1,6 @@
 This script is to calculate glycan atoms per surface residue of protein antigen.
 
-Before you run the script, you need to set up your VMD with "move_to_origin.tcl"
+Two programs should be installed in your system to run GLYCO, which are FreeSASA and python3.
 
 1. If you want to count number of glycan atoms for "all" surface residues of your pathogen,
 
