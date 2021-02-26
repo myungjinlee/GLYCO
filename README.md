@@ -23,9 +23,6 @@ There are two modules in GLYCO script and user can choose based on their interes
     *epitope.txt should have residue name, chain ID, residue number
     (epitope.txt)
      ARG C 301
-     
      THR A 200
-     
      MET A 196
-     
      HIS C 305
