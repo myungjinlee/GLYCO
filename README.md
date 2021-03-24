@@ -12,15 +12,19 @@ GLYCO is to calculate number of glycan atoms per surface residue of protein anti
 2. Download GLYCO
 
 3. Run GLYCO
-There are two modules in GLYCO script and user can choose based on their interest.
- 3.1 If you want to count number of glycan atoms for each surface residue on your protein,
-    command> python3 glyco.py pdbname.pdb cutoff residue glycan_name
-    example> python3 glyco.py 5fyl.pdb 20 residue BMAN AMAN BGLN
- 3.2 If you want to calculate glycan coverage (num of glycan atoms/buried surface area) for epitope residues on your protein,
-    command> python3 glyco.py pdbname.pdb cutoff epitope epitope_residue_list glycan_name
-    example> python3 glyco.py 5fyl.pdb 20 epitope epitope.txt BMAN AMAN BGLN
+ 3.1 A single frame (pdb)
+     If you have a single pdb file and try to run GLYCO, you should follow below. 
+     There are two modules in GLYCO script and user can choose based on their interest.
+    3.1.1 Glycan atoms of each residue:
+          (If you want to count number of glycan atoms for each surface residue on your protein,)
+    command> python3 glyco.py -pdb pdbname.pdb -cutoff cutoff -module res -glycan glyca names -freesasa path of freesasa executable
+    example> python3 glyco.py -pdb 5fyl.pdb -cutoff 20 -moduel res -glycan BMAN AMAN BGLN -freesasa /home/lee/freesasa
+    3.1.2 Glycan coverage of epitope regions: 
+          (If you want to calculate glycan coverage (num of glycan atoms/buried surface area) for epitope residues on your protein,)
+    command> python3 glyco.py -pdb pdbname.pdb -cutoff cutoff -module ep -glycan glyca names -freesasa path of freesasa executable -epitope epitope list
+    example> python3 glyco.py -pdb 5fyl.pdb -cutoff 20 -moduel ep -glycan BMAN AMAN BGLN -freesasa /home/lee/freesasa -epitope epitope.txt
     
-    *epitope.txt should have residue name, chain ID, residue number
+    *epitope.txt should have following format: residue name, chain ID, residue number
     (epitope.txt)
      ARG C 309
      THR A 200
