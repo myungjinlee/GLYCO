@@ -12,11 +12,11 @@ GLYCO is to calculate number of glycan atoms per surface residue of protein anti
 2. Download GLYCO
 
 3. Run GLYCO
-  3.1 A single frame (pdb)
+  3.1 A single frame (pdb)   
      If you have a single pdb file and try to run GLYCO, you should follow below. 
-     There are two modules in GLYCO script and user can choose based on their interest.
-    3.1.1 Glycan atoms of each residue:
-          (If you want to count number of glycan atoms for each surface residue on your protein,)
+     There are two modules in GLYCO script and user can choose based on their interest. 
+    3.1.1 Glycan atoms of each residue:  
+          (If you want to count number of glycan atoms for each surface residue on your protein,)  
     command> python3 glyco.py -pdb pdbname.pdb -cutoff cutoff -module res -glycan glyca names -freesasa path of freesasa executable
     example> python3 glyco.py -pdb 5fyl.pdb -cutoff 20 -moduel res -glycan BMAN AMAN BGLN -freesasa /home/lee/freesasa
     3.1.2 Glycan coverage of epitope regions: 
