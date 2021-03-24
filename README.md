@@ -12,7 +12,6 @@ GLYCO is to calculate number of glycan atoms per surface residue of protein anti
 2. Download GLYCO
 
 3. Run GLYCO
-  
   3.1 A single frame (pdb)
      If you have a single pdb file and try to run GLYCO, you should follow below. 
      There are two modules in GLYCO script and user can choose based on their interest.
@@ -34,3 +33,4 @@ GLYCO is to calculate number of glycan atoms per surface residue of protein anti
      HIS C 305 
  
  3.2 Multiframes
+   3.1.1 
