@@ -29,4 +29,4 @@ GLYCO is to calculate number of glycan atoms per surface residue of protein anti
      ARG C 309
      THR A 200
      MET A 196
-     HIS C 305
+     HIS C 305 
