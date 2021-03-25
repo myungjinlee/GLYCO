@@ -26,10 +26,10 @@ GLYCO is to calculate number of glycan atoms per surface residue of protein anti
     
        - *epitope.txt should have following format: residue name, chain ID, residue number<br />
        - (epitope.txt)<br />
-       - ARG C 309
-       - THR A 200
-       - MET A 196
-       - HIS C 305 
+       - ARG C 309<br />
+       - THR A 200<br />
+       MET A 196<br />
+       HIS C 305<br />
  
  3.2 Multiframes<br />
    3.1.1<br /> 
