@@ -29,4 +29,5 @@ GLYCO is to calculate number of glycan atoms per surface residue of protein ("re
          HIS C 305<br />
  
    - 3.2 Multiframes<br />
-     - 3.1.1<br />
+     - 3.1.1 Glycan atoms of each residues:<br />
+       - command> bash auto_all_
