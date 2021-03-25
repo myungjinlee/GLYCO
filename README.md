@@ -30,4 +30,4 @@ GLYCO is to calculate number of glycan atoms per surface residue of protein ("re
  
    - 3.2. Multiframes<br />
      - 3.1.1. Glycan atoms of each residues:<br />
-       - command> bash auto_all_
+       - command> bash auto_res_sub.sh 20 /data/SBIS/leem25/glycan_density/glyco/multiframes 3 5
