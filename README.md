@@ -3,11 +3,11 @@
 GLYCO is to calculate number of glycan atoms per surface residue of protein antigen and glycan coverage of epitope residues.
 
 1. Before you run GLYCO: There are some requirements you may have to check before running program.<br />
--1.1 FreeSASA (https://freesasa.github.io/) and python3 should be installed in your system.<br />
--1.2 Coordinate section of input PDB file should follow the standard format of PDB (http://www.wwpdb.org/documentation/file-format-content/format33/sect9.html).<br />
--1.3 The name of protein residues in PDB file should be as below. Especially, please check if your histidine is defined as one of below histidine names.<br />
+   -1.1 FreeSASA (https://freesasa.github.io/) and python3 should be installed in your system.<br />
+   -1.2 Coordinate section of input PDB file should follow the standard format of PDB (http://www.wwpdb.org/documentation/file-format-content/format33/sect9.html).<br />
+   -1.3 The name of protein residues in PDB file should be as below. Especially, please check if your histidine is defined as one of below histidine names.<br />
     ALA ARG ASN ASP CYS GLN GLU GLY HSD HID HIS HIE ILE LEU LYS MET PHE PRO SER THR TRP TYR VAL<br />
--1.4 Glycans in the input PDB files should be defined as either ATOM or HETATM.<br />
+   -1.4 Glycans in the input PDB files should be defined as either ATOM or HETATM.<br />
 
 2. Download GLYCO
 
