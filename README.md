@@ -24,12 +24,12 @@ GLYCO is to calculate number of glycan atoms per surface residue of protein anti
        - command> python3 glyco.py -pdb pdbname.pdb -cutoff cutoff -module ep -glycan glyca names -freesasa path of freesasa executable -epitope epitope list <br />
        - example> python3 glyco.py -pdb 5fyl.pdb -cutoff 20 -moduel ep -glycan BMAN AMAN BGLN -freesasa /home/lee/freesasa -epitope epitope.txt<br /><br />
     
-    *epitope.txt should have following format: residue name, chain ID, residue number<br />
-    (epitope.txt)<br />
-     ARG C 309<br />
-     THR A 200<br />
-     MET A 196<br />
-     HIS C 305<br /> 
+       - *epitope.txt should have following format: residue name, chain ID, residue number<br />
+       - (epitope.txt)<br />
+       - ARG C 309<br />
+       - THR A 200<br />
+       - MET A 196<br />
+       - HIS C 305<br /> 
  
  3.2 Multiframes<br />
    3.1.1<br /> 
