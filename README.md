@@ -19,8 +19,8 @@ GLYCO is to calculate number of glycan atoms per surface residue of protein ("re
        - example> python3 glyco.py -pdb 5fyl.pdb -cutoff 20 -moduel res -glycan BMAN AMAN BGLN -freesasa /home/lee/freesasa<br />
      - 3.1.2. Glycan coverage of epitope regions:<br />
           (If you want to calculate glycan coverage (num of glycan atoms/buried surface area) for epitope residues on your protein,)<br />
-       - command> python3 glyco.py -pdb pdbname.pdb -cutoff cutoff -module ep -glycan glyca names -freesasa path of freesasa executable -epitope epitope list <br />
-       - example> python3 glyco.py -pdb 5fyl.pdb -cutoff 20 -moduel ep -glycan BMAN AMAN BGLN -freesasa /home/lee/freesasa -epitope epitope.txt<br />
+       - command> python3 glyco.py -pdb pdbname.pdb -cutoff cutoff -module ep -glycan glycan names -freesasa path of freesasa executable -epitope epitope list <br />
+       - example> python3 glyco.py -pdb 5fyl.pdb -cutoff 20 -module ep -glycan BMAN AMAN BGLN -freesasa /home/lee/freesasa -epitope epitope.txt<br />
          *epitope.txt should have following format: residue name, chain ID, residue number<br />
          (epitope.txt)<br />
          ARG C 309<br />
@@ -30,4 +30,4 @@ GLYCO is to calculate number of glycan atoms per surface residue of protein ("re
  
    - 3.2. Multiframes<br />
      - 3.1.1. Glycan atoms of each residues:<br />
-       - command> bash auto_res_sub.sh 20 /data/SBIS/leem25/glycan_density/glyco/multiframes 3 5
+       - command> bash multi_res_sub.sh 20 /data/SBIS/leem25/glycan_density/glyco/multiframes 3 5 
