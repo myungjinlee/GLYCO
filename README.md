@@ -8,6 +8,7 @@ GLYCO is to calculate number of glycan atoms per surface residue of protein ("re
    - 1.3. The name of protein residues in PDB file should be as below. Especially, please check if your histidine is defined as one of below histidine names.<br />
     ALA ARG ASN ASP CYS GLN GLU GLY HSD HID HIS HIE ILE LEU LYS MET PHE PRO SER THR TRP TYR VAL<br />
    - 1.4. Glycans in the input PDB files should be defined as either ATOM or HETATM.<br />
+   - 1.5. (If you want to run multiple frames) name of the pdb files should be frame_1.pdb, frame_2.pdb, frame_3.pdb ... etc.
 
 **2. Download GLYCO**
 
