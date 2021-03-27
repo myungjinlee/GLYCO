@@ -50,19 +50,30 @@ GLYCO is to calculate number of glycan atoms per surface residue of protein ("re
    - 3.2. Multiframes: If you have multiple frames of pdb files, you can submit multiple jobs in your HPC system. <br />
      - 3.1.1. Glycan atoms of each residues:<br />
        - Count number of glycan atoms
-       command> bash multi_res_run.sh -frame_start index of first frame -path path of current working directory -glycan glycan names (comma separated) -cutoff cutoff -freesasa path of freesasa executable<br />
        ```
-       example> bash multi_res_run.sh -frame_start 1 -frame_end 50 -path /home/leem/glyco/multiframes -glycan BMA,AMA -cutoff 20 -freesasa /data/leem/freesasa
+       bash multi_res_run.sh -frame_start index of first frame -path path of current working directory -glycan glycan names (comma separated) -cutoff cutoff -freesasa path of freesasa executable
+       ```
+       example)
+       ```
+       bash multi_res_run.sh -frame_start 1 -frame_end 50 -path /home/leem/glyco/multiframes -glycan BMA,AMA -cutoff 20 -freesasa /data/leem/freesasa
        ```
        - Average number of glycan atoms over multiple frames: You have to run it in where all directories, "frames" are located. ($WORKING_DIR/$CUTOFF/res/)<br /> 
-       command> python3 ave_mult.py -frame_start index of first frame -frame_end index of last frame
-       example> python3 ave_mult.py -frame_start 1 -frame_end 50 
+       ```
+       python3 ave_mult.py -frame_start index of first frame -frame_end index of last frame
+       ```
+       example) 
+       ```
+       python3 ave_mult.py -frame_start 1 -frame_end 50 
+       ```
        The output is "ave_res_count.txt"     
      
        - You can visualize it with bfactor script as shown below.<br /> 
-       command> python3 bfactor.py res_count.txt pdbname.pdb<br />
        ```
-       example> python3 bfactor.py res_count.txt frame_1.pdb<br />
+       python3 bfactor.py res_count.txt pdbname.pdb<br />
+       ```
+       example)
+       ```
+       python3 bfactor.py res_count.txt frame_1.pdb<br />
        ```
        
     - 3.1.2. Glycan coverage of epitope regions:<br />
