@@ -65,7 +65,7 @@ GLYCO is to calculate number of glycan atoms per surface residue of protein ("re
        ```
        python3 ave_mult.py -frame_start 1 -frame_end 50 
        ```
-       The output is "ave_res_count.txt"     
+       The output is "ave_res_count.txt"
      
        - You can visualize it with bfactor script as shown below.<br /> 
        ```
