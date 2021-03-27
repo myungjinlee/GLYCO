@@ -20,9 +20,8 @@ GLYCO is to calculate number of glycan atoms per surface residue of protein ("re
        ```
        python3 glyco.py -pdb name.pdb -cutoff cutoff -module res -glycan glycan names -freesasa path of freesasa executable
        ```
-       example) 
        ```
-       python3 glyco.py -pdb 5fyl.pdb -cutoff 20 -module res -glycan BMAN,AMAN,BGLN -freesasa /home/lee/freesasa
+       example) python3 glyco.py -pdb 5fyl.pdb -cutoff 20 -module res -glycan BMAN,AMAN,BGLN -freesasa /home/lee/freesasa
        ```
        There are a bunch of output files, but you want to focus on "res_count.txt" that has number of glycan atoms per residue.<br />
        
