@@ -69,11 +69,11 @@ GLYCO is to calculate number of glycan atoms per surface residue of protein ("re
      
        - You can visualize it with bfactor script as shown below.<br /> 
        ```
-       python3 bfactor.py res_count.txt pdbname.pdb<br />
+       python3 bfactor.py res_count.txt pdbname.pdb
        ```
        example)
        ```
-       python3 bfactor.py res_count.txt frame_1.pdb<br />
+       python3 bfactor.py res_count.txt frame_1.pdb
        ```
        
     - 3.1.2. Glycan coverage of epitope regions:<br />
