@@ -13,11 +13,12 @@ GLYCO is to calculate number of glycan atoms per surface residue of protein ("re
 **2. Download GLYCO**
 
 **3. Run GLYCO<br />**
-   - 3.1. A single frame (pdb): If you have a single pdb file and try to run GLYCO, you should follow below.<br />
+   - 3.1. A single frame (pdb): If you have a single pdb file, you should follow below.<br />
      - 3.1.1. Glycan atoms of each residue:<br />
           (If you want to count number of glycan atoms for each surface residue on your protein,)<br />
        - command> python3 glyco.py -pdb pdbname.pdb -cutoff cutoff -module res -glycan glyca names -freesasa path of freesasa executable<br />
        - example> python3 glyco.py -pdb 5fyl.pdb -cutoff 20 -module res -glycan BMAN AMAN BGLN -freesasa /home/lee/freesasa<br />
+       - There are a bunch of output files, but you want to focus on "res_count.txt" that has number of glycan atoms per residue. 
      - 3.1.2. Glycan coverage of epitope regions:<br />
           (If you want to calculate glycan coverage (num of glycan atoms/buried surface area) for epitope residues on your protein,)<br />
        - command> python3 glyco.py -pdb pdbname.pdb -cutoff cutoff -module ep -glycan glycan names -freesasa path of freesasa executable -epitope epitope list <br />
@@ -29,6 +30,7 @@ GLYCO is to calculate number of glycan atoms per surface residue of protein ("re
          MET A 196<br />
          HIS C 305<br />
  
-   - 3.2. Multiframes<br />
+   - 3.2. Multiframes: If you have multiple frames of pdb files, you can submit multiple jobs in your HPC system. <br />
      - 3.1.1. Glycan atoms of each residues:<br />
        - command> bash multi_res_sub.sh 20 /data/SBIS/leem25/glycan_density/glyco/multiframes 3 5 
+       - 
