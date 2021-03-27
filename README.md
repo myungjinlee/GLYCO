@@ -22,8 +22,8 @@ GLYCO is to calculate number of glycan atoms per surface residue of protein ("re
        There are a bunch of output files, but you want to focus on "res_count.txt" that has number of glycan atoms per residue.<br />
        
        - You can visualize it with bfactor script as shown below.<br /> 
-       command> bfactor.py res_count.txt pdbname.pdb<br />
-       example> bfactor.py res_count.txt frame_1.pdb<br />
+       command> python3 bfactor.py res_count.txt pdbname.pdb<br />
+       example> python3 bfactor.py res_count.txt frame_1.pdb<br />
        
      - 3.1.2. Glycan coverage of epitope regions:<br />
        
@@ -31,7 +31,7 @@ GLYCO is to calculate number of glycan atoms per surface residue of protein ("re
        command> python3 glyco.py -pdb name.pdb -cutoff cutoff -module ep -glycan glycan names -freesasa freesasa executable path -epitope epitope list <br />
        example> python3 glyco.py -pdb 5fyl.pdb -cutoff 20 -module ep -glycan BMAN,AMAN,BGLN -freesasa /home/lee/freesasa -epitope epitope.txt<br />
        *epitope.txt should have following format: residue name, chain ID, residue number<br />
-           (epitope.txt)<br />
+          (epitope.txt)<br />
           ARG C 309<br />
           THR A 200<br />
           MET A 196<br />
@@ -42,3 +42,15 @@ GLYCO is to calculate number of glycan atoms per surface residue of protein ("re
      
        - command> bash multi_res_run.sh -frame_start index of first frame -path path of current working directory -glycan glycan names (comma separated) -cutoff cutoff -freesasa path of freesasa executable
        - example> bash multi_res_run.sh -frame_start 1 -frame_end 50 -path /home/leem/glyco/multiframes -glycan BMA,AMA -cutoff 20 -freesasa /data/leem/freesasa
+       
+     - 3.1.2. Average number of glycan atoms over multiple frames.<br />
+     
+       - You have to run it in where all directories, "frames" are located. ($WORKING_DIR/$CUTOFF/res/)
+       command> python3 ave_mult.py -frame_start index of first frame -frame_end index of last frame
+       example> python3 ave_mult.py -frame_start 1 -frame_end 50 
+       The output is "ave_res_count.txt"     
+     
+       - You can visualize it with bfactor script as shown below.<br /> 
+       command> python3 bfactor.py res_count.txt pdbname.pdb<br />
+       example> python3 bfactor.py res_count.txt frame_1.pdb<br />
+     
