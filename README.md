@@ -39,7 +39,7 @@ GLYCO is to calculate number of glycan atoms per surface residue of protein ("re
  
    - 3.2. Multiframes: If you have multiple frames of pdb files, you can submit multiple jobs in your HPC system. <br />
      - 3.1.1. Glycan atoms of each residues:<br />
-       - Count number of glycan atoms 
+       - Count number of glycan atoms
        command> bash multi_res_run.sh -frame_start index of first frame -path path of current working directory -glycan glycan names (comma separated) -cutoff cutoff -freesasa path of freesasa executable<br />
        example> bash multi_res_run.sh -frame_start 1 -frame_end 50 -path /home/leem/glyco/multiframes -glycan BMA,AMA -cutoff 20 -freesasa /data/leem/freesasa
        
@@ -53,4 +53,5 @@ GLYCO is to calculate number of glycan atoms per surface residue of protein ("re
        example> python3 bfactor.py res_count.txt frame_1.pdb<br />
        
     - 3.1.2. Glycan coverage of epitope regions:<br />
+    command> bash multi_res_run.sh -frame_start index of first 
      
