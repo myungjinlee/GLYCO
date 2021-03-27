@@ -32,10 +32,10 @@ GLYCO is to calculate number of glycan atoms per surface residue of protein ("re
        example> python3 glyco.py -pdb 5fyl.pdb -cutoff 20 -module ep -glycan BMAN,AMAN,BGLN -freesasa /home/lee/freesasa -epitope epitope.txt<br />
        *epitope.txt should have following format: residue name, chain ID, residue number<br />
            (epitope.txt)<br />
-           ARG C 309<br />
-           THR A 200<br />
-           MET A 196<br />
-           HIS C 305<br />
+         - ARG C 309<br />
+         - THR A 200<br />
+         - MET A 196<br />
+         - HIS C 305<br />
  
    - 3.2. Multiframes: If you have multiple frames of pdb files, you can submit multiple jobs in your HPC system. <br />
      - 3.1.1. Glycan atoms of each residues:<br />
