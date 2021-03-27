@@ -43,9 +43,7 @@ GLYCO is to calculate number of glycan atoms per surface residue of protein ("re
        - command> bash multi_res_run.sh -frame_start index of first frame -path path of current working directory -glycan glycan names (comma separated) -cutoff cutoff -freesasa path of freesasa executable
        - example> bash multi_res_run.sh -frame_start 1 -frame_end 50 -path /home/leem/glyco/multiframes -glycan BMA,AMA -cutoff 20 -freesasa /data/leem/freesasa
        
-     - 3.1.2. Average number of glycan atoms over multiple frames.<br />
-     
-       - You have to run it in where all directories, "frames" are located. ($WORKING_DIR/$CUTOFF/res/)
+       - Average number of glycan atoms over multiple frames: You have to run it in where all directories, "frames" are located. ($WORKING_DIR/$CUTOFF/res/)<br /> 
        command> python3 ave_mult.py -frame_start index of first frame -frame_end index of last frame
        example> python3 ave_mult.py -frame_start 1 -frame_end 50 
        The output is "ave_res_count.txt"     
