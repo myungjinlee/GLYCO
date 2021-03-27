@@ -26,7 +26,8 @@ GLYCO is to calculate number of glycan atoms per surface residue of protein ("re
        example> bfactor.py res_count.txt frame_1.pdb<br />
        
      - 3.1.2. Glycan coverage of epitope regions:<br />
-          (If you want to calculate glycan coverage (num of glycan atoms/buried surface area) for epitope residues on your protein,)<br />
+       
+       - Calculate glycan coverage (num of glycan atoms/buried surface area) for epitope residues on your protein,)<br />
        command> python3 glyco.py -pdb pdbname.pdb -cutoff cutoff -module ep -glycan glycan names -freesasa path of freesasa executable -epitope epitope list <br />
        example> python3 glyco.py -pdb 5fyl.pdb -cutoff 20 -module ep -glycan BMAN,AMAN,BGLN -freesasa /home/lee/freesasa -epitope epitope.txt<br />
        *epitope.txt should have following format: residue name, chain ID, residue number<br />
