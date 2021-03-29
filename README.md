@@ -48,9 +48,9 @@ GLYCO is to calculate number of glycan atoms per surface residue of protein ("re
        ```
        *epitope.txt should have following format: residue name, chain ID, residue number<br />
          (epitope.txt)<br />
-          ARG&nbsp; C&nbsp; 309<br />
+          ARG&nbsp; A&nbsp; 309<br />
           THR&nbsp; A&nbsp; 200<br />
-          MET&nbsp; A&nbsp; 196<br />
+          MET&nbsp; B&nbsp; 196<br />
           ASP&nbsp; C&nbsp; 305<br />
  
    - 3.2. Multiframes: If you have multiple frames of pdb files, you can submit multiple jobs in your HPC system. <br />
