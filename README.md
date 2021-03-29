@@ -13,7 +13,7 @@ GLYCO is to calculate number of glycan atoms per surface residue of protein ("re
 **2. Download GLYCO**
 
 **3. Run GLYCO<br />**
-   - GLYCO takes the following arguments. Depending on the module and number of frames, you need to enter all of these or some:<br />
+   - GLYCO takes the following arguments. Depending on the module and number of frames that you have, you need to enter all or some arguments:<br />
  
    &nbsp;&nbsp;&nbsp;------------------------------------------------------------------<br />
        &nbsp; &nbsp; &nbsp; -pdb&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; pdbname.pdb<br />
