@@ -56,7 +56,7 @@ GLYCO is to calculate number of glycan atoms per surface residue of protein ("re
    - 3.2. Multiframes: If you have multiple frames of pdb files, you can submit multiple jobs in your HPC system. <br />
      - 3.1.1. Glycan atoms of each residues:<br />
        - Count number of glycan atoms
-         1) Input pdbs should be named as frame_INDEX.pdb such as frame_1.pdb, frame_2.pdb etc and deposit them in folder name "input"
+         1) Input pdbs should be named as frame_INDEX.pdb such as frame_1.pdb, frame_2.pdb and deposit them in folder name "input"
          2) Folders input, template, and script glyco.py should be all in your current working directory
        ```
        bash multi_res_run.sh -frame_start 1 -frame_end 50 -path /home/leem/glyco/multiframes -glycan BMA,AMA -cutoff 20 -freesasa /data/leem/freesasa
