@@ -22,6 +22,8 @@ GLYCO is to calculate number of glycan atoms per surface residue of protein ("re
        &nbsp; &nbsp; &nbsp; -glycan&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; list glycan names with comma separator<br />
        &nbsp; &nbsp; &nbsp; -freesasa&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;path of freesasa executable<br />
        &nbsp; &nbsp; &nbsp; -path&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; path of current working directory<br />
+       &nbsp; &nbsp; &nbsp; -frame_start&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; index of first frame<br />
+       &nbsp; &nbsp; &nbsp; -frame_end&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; index of last frame<br />
    &nbsp;&nbsp;&nbsp;------------------------------------------------------------------<br />
    
    - 3.1. A single frame (pdb): If you have a single pdb file, you should follow below.<br />
@@ -29,19 +31,11 @@ GLYCO is to calculate number of glycan atoms per surface residue of protein ("re
      
        - Count number of glycan atoms for each surface residue on your protein<br />
        ```
-       python3 glyco.py -pdb name.pdb -cutoff cutoff -module res -glycan glycan names -freesasa path of freesasa executable
-       ```
-       example)
-       ```
        python3 glyco.py -pdb 5fyl.pdb -cutoff 20 -module res -glycan BMAN,AMAN,BGLN -freesasa /home/lee/freesasa
        ```
        There are a bunch of output files, but you want to focus on "res_count.txt" that has number of glycan atoms per residue.<br />
        
        - You can visualize it with bfactor script as shown below.<br /> 
-       ```
-       python3 bfactor.py res_count.txt pdbname.pdb
-       ```
-       example)
        ```
        python3 bfactor.py res_count.txt frame_1.pdb
        ```
@@ -49,10 +43,6 @@ GLYCO is to calculate number of glycan atoms per surface residue of protein ("re
      - 3.1.2. Glycan coverage of epitope regions:<br />
        
        - Calculate glycan coverage (num of glycan atoms/buried surface area) for epitope residues of your protein)<br />
-       ```
-       python3 glyco.py -pdb name.pdb -cutoff cutoff -module ep -glycan glycan names -epitope epitope list
-       ```
-       example)
        ```
        python3 glyco.py -pdb 5fyl.pdb -cutoff 20 -module ep -glycan BMAN,AMAN,BGLN -epitope epitope.txt
        ```
@@ -69,27 +59,15 @@ GLYCO is to calculate number of glycan atoms per surface residue of protein ("re
          1) Input pdbs should be named as frame_INDEX.pdb such as frame_1.pdb, frame_2.pdb etc and deposit them in folder name "input"
          2) Folders input, template, and script glyco.py should be all in your current working directory
        ```
-       bash multi_res_run.sh -frame_start index of first frame -path path of current working directory -glycan glycan names (comma separated) -cutoff cutoff -freesasa path of freesasa executable
-       ```
-       example)
-       ```
        bash multi_res_run.sh -frame_start 1 -frame_end 50 -path /home/leem/glyco/multiframes -glycan BMA,AMA -cutoff 20 -freesasa /data/leem/freesasa
        ```
        - Average number of glycan atoms over multiple frames: Once you finish calculating number of glycan atoms per each frame, you can average "res_count.txt" over the frames in this step. You have to run it in where all directories, "frames" are located. ($WORKING_DIR/$CUTOFF/res/)<br /> 
-       ```
-       python3 ave_mult.py -frame_start index of first frame -frame_end index of last frame
-       ```
-       example) 
        ```
        python3 ave_mult.py -frame_start 1 -frame_end 50 
        ```
        The output is "ave_res_count.txt"
      
        - You can visualize it with bfactor script as shown below.<br /> 
-       ```
-       python3 bfactor.py ave_res_count.txt pdbname.pdb
-       ```
-       example)
        ```
        python3 bfactor.py ave_res_count.txt frame_1.pdb
        ```
