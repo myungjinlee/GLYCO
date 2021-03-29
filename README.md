@@ -37,7 +37,7 @@ GLYCO is to calculate number of glycan atoms per surface residue of protein ("re
        
      - 3.1.2. Glycan coverage of epitope regions:<br />
        
-       - Calculate glycan coverage (num of glycan atoms/buried surface area) for epitope residues on your protein,)<br />
+       - Calculate glycan coverage (num of glycan atoms/buried surface area) for epitope residues of your protein)<br />
        ```
        python3 glyco.py -pdb name.pdb -cutoff cutoff -module ep -glycan glycan names -epitope epitope list
        ```
