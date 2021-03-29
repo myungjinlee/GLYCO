@@ -14,14 +14,14 @@ GLYCO is to calculate number of glycan atoms per surface residue of protein ("re
 
 **3. Run GLYCO<br />**
    ------------------------------------------------------------------<br />
-   * GLYCO takes the following arguments with flags:<br />
-   *   -pdb        pdbname.pdb<br />
-   *   -cutoff     cutoff in Angstrom<br />
-   *   -module     res or ep<br />
-   *   -glycan     list glycan names with comma separator<br />
-   *   -freesasa   path of freesasa executable<br />
-   *   -path       path of current working directory<br />
-   *------------------------------------------------------------------<br />
+    GLYCO takes the following arguments with flags:<br />
+       -pdb        pdbname.pdb<br />
+       -cutoff     cutoff in Angstrom<br />
+       -module     res or ep<br />
+       -glycan     list glycan names with comma separator<br />
+       -freesasa   path of freesasa executable<br />
+       -path       path of current working directory<br />
+   ------------------------------------------------------------------<br />
    - 3.1. A single frame (pdb): If you have a single pdb file, you should follow below.<br />
      - 3.1.1. Glycan atoms of each residue:<br />
      
