@@ -53,7 +53,7 @@ GLYCO is to calculate number of glycan atoms per surface residue of protein ("re
           MET&nbsp; B&nbsp; 196<br />
           ASP&nbsp; C&nbsp; 305<br />
        
-       The output is "ep_glysum.txt"
+       The output is "ep_glysum.txt" which has summation of number of glycan atoms of the input epitope.
  
    - 3.2. Multiframes: If you have multiple frames of pdb files, you can submit multiple jobs in your HPC system. <br />
      - 3.1.1. Glycan atoms of each residues:<br />
