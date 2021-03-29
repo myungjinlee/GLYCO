@@ -17,11 +17,11 @@ GLYCO is to calculate number of glycan atoms per surface residue of protein ("re
  
    ------------------------------------------------------------------<br />
        &nbsp; &nbsp; &nbsp; -pdb&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pdbname.pdb;<br />
-       &nbsp; &nbsp; &nbsp; -cutoff&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbspcutoff in Angstrom<br />
-       &nbsp; &nbsp; &nbsp; -module&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbspres or ep<br />
-       &nbsp; &nbsp; &nbsp; -glycan&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsplist glycan names with comma separator<br />
-       &nbsp; &nbsp; &nbsp; -freesasa&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsppath of freesasa executable<br />
-       &nbsp; &nbsp; &nbsp; -path&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsppath of current working directory<br />
+       &nbsp; &nbsp; &nbsp; -cutoff&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cutoff in Angstrom<br />
+       &nbsp; &nbsp; &nbsp; -module&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;res or ep<br />
+       &nbsp; &nbsp; &nbsp; -glycan&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;list glycan names with comma separator<br />
+       &nbsp; &nbsp; &nbsp; -freesasa&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;path of freesasa executable<br />
+       &nbsp; &nbsp; &nbsp; -path&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;path of current working directory<br />
    ------------------------------------------------------------------<br />
    
    - 3.1. A single frame (pdb): If you have a single pdb file, you should follow below.<br />
