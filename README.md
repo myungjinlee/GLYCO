@@ -39,6 +39,7 @@ GLYCO is to calculate number of glycan atoms per surface residue of protein ("re
        ```
        python3 bfactor.py res_count.txt frame_1.pdb
        ```
+       You can open the output "frame_1_bfactor.pdb" with PyMol. 
        
      - 3.1.2. Glycan atoms of epitope residues:<br />
        
@@ -74,7 +75,8 @@ GLYCO is to calculate number of glycan atoms per surface residue of protein ("re
        ```
        python3 bfactor.py ave_res_count.txt frame_1.pdb
        ```
-     - 3.1.2. Glycan coverage of epitope regions:<br />
+       You can open the output "frame_1_bfactor.pdb" with PyMol. 
+     - 3.1.2. Glycan atoms of epitope regions:<br />
        ```
        bash multi_res_run.sh -frame_start 1 -frame_end 50 -module ep -path /home/leem/glyco/multiframes -glycan BMA,AMA,BGL
        ```
