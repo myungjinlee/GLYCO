@@ -75,7 +75,7 @@ GLYCO is to calculate number of glycan atoms per surface residue of protein ("re
        ```
      - 3.1.2. Glycan coverage of epitope regions:<br />
        ```
-       bash multi_res_run.sh -frame_start 1 -frame_end 50 -module ep -path /home/leem/glyco/multiframes -glycan BMA,AMA
+       bash multi_res_run.sh -frame_start 1 -frame_end 50 -module ep -path /home/leem/glyco/multiframes -glycan BMA,AMA 
        ```
        
      
