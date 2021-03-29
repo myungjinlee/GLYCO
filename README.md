@@ -54,6 +54,7 @@ GLYCO is to calculate number of glycan atoms per surface residue of protein ("re
           ASP&nbsp; C&nbsp; 305<br />
        
        The output is "ep_glysum.txt" which has summation of number of glycan atoms of the input epitope.
+       Once you calculate buried surface area of your epitope and divide ep_glysum by the buried surface area, you can get epitope-glycan coverage. Calculating buried surface area is not provided by GLYCO, but there are many ways you can estimate the surface area such as Pisa(https://www.ebi.ac.uk/msd-srv/prot_int/cgi-bin/piserver) or making your own script. 
  
    - 3.2. Multiframes: If you have multiple frames of pdb files, you can submit multiple jobs in your HPC system. <br />
      - 3.1.1. Glycan atoms of each residues:<br />
@@ -63,7 +64,7 @@ GLYCO is to calculate number of glycan atoms per surface residue of protein ("re
        ```
        bash multi_res_run.sh -frame_start 1 -frame_end 50 -path /home/leem/glyco/multiframes -glycan BMA,AMA,BGL -cutoff 20 -freesasa /data/leem/freesasa
        ```
-       - Average number of glycan atoms over multiple frames: Once you finish calculating number of glycan atoms per each frame, you can average "res_count.txt" over the frames in this step. You have to run it in where all directories, "frames" are located. ($WORKING_DIR/$CUTOFF/res/)<br /> 
+       - Average number of glycan atoms over multiple frames: Once you finish calculating number of glycan atoms per each frame, you can average "res_count.txt" over the frames. You have to run it in where all directories, "frames" are located. ($WORKING_DIR/$CUTOFF/res/)<br /> 
        ```
        python3 ave_mult.py -frame_start 1 -frame_end 50 
        ```
