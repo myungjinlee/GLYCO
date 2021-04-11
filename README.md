@@ -63,12 +63,13 @@ GLYCO is to calculate number of glycan atoms per surface residue of protein ("re
          1) Input PDBs should be named as frame_INDEX.pdb (e.g., frame_1.pdb, frame_2.pdb) and located in folder "input"
          2) The "input" folder, "template" folder, and glyco.py should be in your current working directory. 
          3) The current working directory in 2) should be entered in the argument "-path". 
+         4) Change line ## in the code that works for your HPC system.
        ```
        bash multi_res_run.sh -frame_start 1 -frame_end 50 -path /home/leem/glyco/multiframes -glycan BMA,AMA,BGL -cutoff 20 -freesasa /data/leem/freesasa
        ```
-       - Average number of glycan atoms over multiple frames: Once you finish calculating number of glycan atoms per each frame, you can average "res_count.txt" over the multiple frames. You have to run it in where all directories, "frames" are located. ($WORKING_DIR/$CUTOFF/res/)<br /> 
+       - Average number of glycan atoms over multiple frames: Once you finish calculating number of glycan atoms per each frame, you can average "res_count.txt" over the multiple frames. You have to run it in where all directories, (e.g., "frames") are located. ($WORKING_DIR/$CUTOFF/res/)<br /> 
        ```
-       python3 ave_mult.py -frame_start 1 -frame_end 50 
+       python3 ave_res.py -frame_start 1 -frame_end 50 
        ```
        The output is "ave_res_count.txt"
      
@@ -79,15 +80,15 @@ GLYCO is to calculate number of glycan atoms per surface residue of protein ("re
        You can open the output "frame_1_bfactor.pdb" with PyMOL to display the glycan coverage. 
      - 3.1.2. Glycan atoms of epitope regions:<br />
        - Count number of glycan atoms per epitope residue
-         1) Should follow the same requirements in Section 3.1.1. 1)-3).
-         2) The script bundles several jobs and submit each bundle in one node. You should specify the number of jobs for a bundle in argument "-frame_gap".
+         1) Should follow the same instruction in Section 3.1.1. 1)-4).
+         2) The script groups several jobs in one bundle and submit each bundled job in one node. You should specify the number of jobs for a bundle in argument "-frame_gap". (Each epitope-glycan coverage normally finishes in a short time, which may reduce the efficiency of calculation in HPC system if each job was distributed per node. In this case, bundling can solve the problem.)
        ```
        bash multi_glyco.sh -cutoff 20 -frame_start 1 -frame_end 50 -frame_gap 10 -module ep -path /home/leem/glyco/multiframes -glycan BMA,AMA,BGL -epitope /home/leem/glyco/multiframes/epitope/epitope.txt
        ```
-       - Average number of glycan atoms over multiple frames: Once you finish calculating number of glycan atoms per each frame, you can average "ep_glysum.txt" over the frames. You have to run it in where all directories, "frames" are located. ($WORKING_DIR/$CUTOFF/res/)<br /> 
+       - Average number of glycan atoms over multiple frames: Once you finish calculating number of glycan atoms per each frame, you can average "ep_glysum.txt" over the multiple frames. You have to run it in where all directories, (e.g., "frames") are located. ($WORKING_DIR/$CUTOFF/ep/)<br /> 
        ```
-       python3 .py -frame_start 1 -frame_end 50 
+       python3 ave_ep.py -frame_start 1 -frame_end 50 
        ```
-       The output is ".txt"     
+       The output is "ave_ep_gly.txt"     
        
-        *Each epitope-glycan coverage normally finishes in a short time, which may reduce the efficiency of calculation if each job was distributed per node.
+      
