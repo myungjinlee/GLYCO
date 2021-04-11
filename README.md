@@ -4,7 +4,7 @@ GLYCO is a program to calculate number of glycan atoms per surface residue of pr
 
 **1. Before you run GLYCO: There are some requirements you may have to check before running the program.<br />**
    - 1.1. FreeSASA (https://freesasa.github.io/) and python3 should be installed.<br />
-   - 1.2. Coordinate section of input PDB files should follow the standard ATOM/HETATM format of PDB (http://www.wwpdb.org/documentation/file-format-content/format33/sect9.html) with the exact location of , x,y,z column number.<br />
+   - 1.2. Coordinate section of input PDB files should follow the standard ATOM/HETATM record format of PDB (http://www.wwpdb.org/documentation/file-format-content/format33/sect9.html) from column 1 to 54.<br />
    - 1.3. Protein residues in PDB files should be named as below. Especially, please check if your histidine is defined as one of below histidine names.<br />
     ALA ARG ASN ASP CYS GLN GLU GLY HSD HID HIS HIE ILE LEU LYS MET PHE PRO SER THR TRP TYR VAL<br />
    - 1.4. Glycans in input PDB files should be defined as either ATOM or HETATM.<br />
@@ -12,7 +12,7 @@ GLYCO is a program to calculate number of glycan atoms per surface residue of pr
 **2. Download GLYCO**
 
 **3. Run GLYCO<br />**
-   - GLYCO takes the following arguments. Depending on the module and number of frames you have, you need to enter all or some arguments:<br />
+   - GLYCO takes the following arguments. Depending on the module and number of frames you have, the required arguments vary:<br />
  
    &nbsp;&nbsp;&nbsp;------------------------------------------------------------------<br />
        &nbsp; &nbsp; &nbsp; -pdb&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; pdbname.pdb<br />
@@ -26,8 +26,8 @@ GLYCO is a program to calculate number of glycan atoms per surface residue of pr
        &nbsp; &nbsp; &nbsp; -frame_gap&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; number of frames to bundle<br />
    &nbsp;&nbsp;&nbsp;------------------------------------------------------------------<br />
    
-   - 3.1. A single frame (pdb): If you have a single pdb file, you should follow below.<br />
-     - 3.1.1. Glycan atoms of each residue:<br />
+   - 3.1. A single frame (PDB): If you have a single PDB file, you should follow below.<br />
+     - 3.1.1. Glycan atoms of each residue -  module: "res":<br />
      
        - Count number of glycan atoms for each surface residue on your protein<br />
        ```
@@ -39,23 +39,23 @@ GLYCO is a program to calculate number of glycan atoms per surface residue of pr
        ```
        python3 bfactor.py res_count.txt frame_1.pdb
        ```
-       You can open the output "frame_1_bfactor.pdb" with PyMol. 
+       You can open the output "frame_1_bfactor.pdb" with PyMOL. 
        
-     - 3.1.2. Glycan atoms of epitope residues:<br />
+     - 3.1.2. Glycan atoms of epitope residues - module: "ep":<br />
        
        - Calculate number of glycan atoms of epitope residues<br />
        ```
        python3 glyco.py -pdb 5fyl.pdb -cutoff 20 -module ep -glycan BMA,AMA,BGL -epitope epitope.txt
        ```
-       *epitope.txt should have following format: residue name, chain ID, residue number<br />
+       *epitope.txt should be in the following format: residue name, chain ID, residue number<br />
          (epitope.txt)<br />
           ARG&nbsp; A&nbsp; 309<br />
           THR&nbsp; A&nbsp; 200<br />
           MET&nbsp; B&nbsp; 196<br />
           ASP&nbsp; C&nbsp; 305<br />
        
-       The output is "ep_glysum.txt" which has summation of number of glycan atoms of the input epitope. This value is sum of number of glycan atoms of the epitope residues and excluded the overlapped, redundant glycan atoms per epitope. 
-       Once you calculate buried surface area of your epitope and divide ep_glysum by the buried surface area, you can get epitope-glycan coverage. Calculating buried surface area is not provided by GLYCO, but there are many ways you can estimate the surface area such as Pisa(https://www.ebi.ac.uk/msd-srv/prot_int/cgi-bin/piserver) or making your own script. 
+       The output is "ep_glysum.txt" which has summation of number of glycan atoms of the input epitope residues. This value excludes the overlapped, redundant glycan atoms shared among an epitope. 
+       Once you calculate buried surface area of your epitope and divide ep_glysum by the buried surface area, you can get epitope-glycan coverage. Calculating buried surface area is not provided by GLYCO, but there are many ways you can estimate the epitope-buried surface area such as Pisa(https://www.ebi.ac.uk/msd-srv/prot_int/cgi-bin/piserver) or making your own script with FreeSASA output. 
  
    - 3.2. Multiframes: If you have multiple frames of pdb files, you can submit multiple jobs in your HPC system. <br />
      - 3.1.1. Glycan atoms of each residues:<br />
