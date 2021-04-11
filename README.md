@@ -8,7 +8,6 @@ GLYCO is to calculate number of glycan atoms per surface residue of protein ("re
    - 1.3. Protein residues in PDB files should be named as below. Especially, please check if your histidine is defined as one of below histidine names.<br />
     ALA ARG ASN ASP CYS GLN GLU GLY HSD HID HIS HIE ILE LEU LYS MET PHE PRO SER THR TRP TYR VAL<br />
    - 1.4. Glycans in input PDB files should be defined as either ATOM or HETATM.<br />
-   - 1.5. (Only if you want to run multiple frames) The name of PDB files should be frame_INDEX.pdb format (e.g., frame_1.pdb, frame_2.pdb, frame_3.pdb ...)
 
 **2. Download GLYCO**
 
@@ -61,12 +60,13 @@ GLYCO is to calculate number of glycan atoms per surface residue of protein ("re
    - 3.2. Multiframes: If you have multiple frames of pdb files, you can submit multiple jobs in your HPC system. <br />
      - 3.1.1. Glycan atoms of each residues:<br />
        - Count number of glycan atoms
-         1) Input pdbs should be named as frame_INDEX.pdb such as frame_1.pdb, frame_2.pdb and located in folder "input"
-         2) "input" folder, "template" folder, and glyco.py should be all in your current working directory and define your working directory in argument "-path". 
+         1) Input PDBs should be named as frame_INDEX.pdb (e.g., frame_1.pdb, frame_2.pdb) and located in folder "input"
+         2) The "input" folder, "template" folder, and glyco.py should be in your current working directory. 
+         3) The current working directory in 2) should be entered in the argument "-path". 
        ```
        bash multi_res_run.sh -frame_start 1 -frame_end 50 -path /home/leem/glyco/multiframes -glycan BMA,AMA,BGL -cutoff 20 -freesasa /data/leem/freesasa
        ```
-       - Average number of glycan atoms over multiple frames: Once you finish calculating number of glycan atoms per each frame, you can average "res_count.txt" over the frames. You have to run it in where all directories, "frames" are located. ($WORKING_DIR/$CUTOFF/res/)<br /> 
+       - Average number of glycan atoms over multiple frames: Once you finish calculating number of glycan atoms per each frame, you can average "res_count.txt" over the multiple frames. You have to run it in where all directories, "frames" are located. ($WORKING_DIR/$CUTOFF/res/)<br /> 
        ```
        python3 ave_mult.py -frame_start 1 -frame_end 50 
        ```
@@ -76,12 +76,11 @@ GLYCO is to calculate number of glycan atoms per surface residue of protein ("re
        ```
        python3 bfactor.py ave_res_count.txt frame_1.pdb
        ```
-       You can open the output "frame_1_bfactor.pdb" with PyMOL. 
+       You can open the output "frame_1_bfactor.pdb" with PyMOL to display the glycan coverage. 
      - 3.1.2. Glycan atoms of epitope regions:<br />
        - Count number of glycan atoms per epitope residue
-         1) Input pdbs should be named as frame_INDEX.pdb such as frame_1.pdb, frame_2.pdb and located in folder "input"
-         2) "input" folder, "template" folder, and glyco.py should be all in your current working directory and define your working directory in argument "-path". 
-         3) The script bundles several jobs and submit them in one node. You should specify the number of jobs you want to bundle by argument "-frame_gap".
+         1) Should follow the same requirements in Section 3.1.1. 1)-3).
+         2) The script bundles several jobs and submit each bundle in one node. You should specify the number of jobs for a bundle in argument "-frame_gap".
        ```
        bash multi_glyco.sh -cutoff 20 -frame_start 1 -frame_end 50 -frame_gap 10 -module ep -path /home/leem/glyco/multiframes -glycan BMA,AMA,BGL -epitope /home/leem/glyco/multiframes/epitope/epitope.txt
        ```
@@ -90,3 +89,5 @@ GLYCO is to calculate number of glycan atoms per surface residue of protein ("re
        python3 .py -frame_start 1 -frame_end 50 
        ```
        The output is ".txt"     
+       
+        *Each epitope-glycan coverage normally finishes in a short time, which may reduce the efficiency of calculation if each job was distributed per node.
