@@ -77,7 +77,7 @@ GLYCO is to calculate number of glycan atoms per surface residue of protein ("re
        ```
        python3 bfactor.py ave_res_count.txt frame_1.pdb
        ```
-       You can open the output "frame_1_bfactor.pdb" with PyMOL to display the glycan coverage. 
+       You can open the output "frame_1_bfactor.pdb" with PyMOL to display the glycan coverage per protein surface residue. 
      - 3.1.2. Glycan atoms of epitope regions:<br />
        - Count number of glycan atoms per epitope residue
          1) Should follow the same instruction in Section 3.1.1. 1)-4).
