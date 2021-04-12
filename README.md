@@ -91,5 +91,5 @@ GLYCO is a program to calculate number of glycan atoms per surface residue of pr
        ```
        The output is "ave_ep_gly.txt"     
        
- Please report bugs to Myungjin Lee (myungjin.lee@nih.gov)
+ Please report bugs or any question to Myungjin Lee (myungjin.lee@nih.gov)
       
