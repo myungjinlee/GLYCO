@@ -10,7 +10,7 @@ GLYCO is a program to calculate number of glycan atoms per surface residue of pr
    - 1.4. Glycans in input PDB files should be defined as either ATOM or HETATM.<br />
 
 **2. Download GLYCO** 
-   - Download glyco.py, template folder in your current working directory
+   - Download glyco.py, template folder in your current working directory.<br />
 **3. Run GLYCO<br />**
    - GLYCO takes the following arguments. Depending on the module and number of frames you have, the required arguments vary:<br />
  
