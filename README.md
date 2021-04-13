@@ -24,6 +24,7 @@ GLYCO is a program to calculate number of glycan atoms per surface residue of pr
        &nbsp; &nbsp; &nbsp; -frame_start&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;index of first frame<br />
        &nbsp; &nbsp; &nbsp; -frame_end&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; index of last frame<br />
        &nbsp; &nbsp; &nbsp; -frame_gap&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; number of frames to bundle<br />
+       &nbsp; &nbsp; &nbsp; -num_proc&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; number of processors to allocate<br />
    &nbsp;&nbsp;&nbsp;------------------------------------------------------------------<br />
    
    - 3.1. A single frame (PDB): If you have a single PDB file, you should follow below.<br />
@@ -31,7 +32,7 @@ GLYCO is a program to calculate number of glycan atoms per surface residue of pr
      
        - Count number of glycan atoms for each surface residue on your protein<br />
        ```
-       python3 glyco.py -pdb 5fyl.pdb -cutoff 20 -module res -glycan BMA,AMA,BGL -freesasa /home/lee/freesasa
+       python3 glyco.py -pdb 5fyl.pdb -cutoff 20 -module res -glycan BMA,AMA,BGL -freesasa /home/lee/freesasa -num_proc 28
        ```
        There are a bunch of output files, but you want to focus on "res_count.txt" that has number of glycan atoms per residue.<br />
        
@@ -45,7 +46,7 @@ GLYCO is a program to calculate number of glycan atoms per surface residue of pr
        
        - Calculate number of glycan atoms of epitope residues<br />
        ```
-       python3 glyco.py -pdb 5fyl.pdb -cutoff 20 -module ep -glycan BMA,AMA,BGL -epitope epitope.txt
+       python3 glyco.py -pdb 5fyl.pdb -cutoff 20 -module ep -glycan BMA,AMA,BGL -epitope epitope.txt -num_proc 28
        ```
        *epitope.txt should be in the following format: residue name, chain ID, residue number<br />
          (epitope.txt)<br />
@@ -65,7 +66,7 @@ GLYCO is a program to calculate number of glycan atoms per surface residue of pr
          3) The current working directory in 2) should be entered in the argument "-path". 
          4) Change line ## in the code that works for your HPC system.
        ```
-       bash multi_res_run.sh -frame_start 1 -frame_end 50 -path /home/leem/glyco/multiframes -glycan BMA,AMA,BGL -cutoff 20 -freesasa /data/leem/freesasa
+       bash multi_res_run.sh -frame_start 1 -frame_end 50 -path /home/leem/glyco/multiframes -glycan BMA,AMA,BGL -cutoff 20 -freesasa /data/leem/freesasa -num_proc 28
        ```
        - Average number of glycan atoms over multiple frames: Once you finish calculating number of glycan atoms per each frame, you can average "res_count.txt" over the multiple frames. You have to run it in where all directories, (e.g., "frames") are located. ($WORKING_DIR/$CUTOFF/res/)<br /> 
        ```
@@ -83,7 +84,7 @@ GLYCO is a program to calculate number of glycan atoms per surface residue of pr
          1) Should follow the same instruction in Section 3.1.1. 1)-4).
          2) The script groups several jobs in one bundle and submit each bundled job in one node. You should specify the number of jobs for a bundle in argument "-frame_gap". (Each epitope-glycan coverage normally finishes in a short time, which may reduce the efficiency of calculation in HPC system if each job was distributed per node. In this case, bundling can solve the problem.)
        ```
-       bash multi_glyco.sh -cutoff 20 -frame_start 1 -frame_end 50 -frame_gap 10 -module ep -path /home/leem/glyco/multiframes -glycan BMA,AMA,BGL -epitope /home/leem/glyco/multiframes/epitope/epitope.txt
+       bash multi_glyco.sh -cutoff 20 -frame_start 1 -frame_end 50 -frame_gap 10 -module ep -path /home/leem/glyco/multiframes -glycan BMA,AMA,BGL -num_proc 28 -epitope /home/leem/glyco/multiframes/epitope/epitope.txt
        ```
        - Average number of glycan atoms over multiple frames: Once you finish calculating number of glycan atoms per each frame, you can average "ep_glysum.txt" over the multiple frames. You have to run it in where all directories, (e.g., "frames") are located. ($WORKING_DIR/$CUTOFF/ep/)<br /> 
        ```
