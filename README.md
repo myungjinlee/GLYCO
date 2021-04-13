@@ -67,7 +67,7 @@ GLYCO is a program to calculate number of glycan atoms per surface residue of pr
          3) The current working directory in 2) should be entered in the argument "-path". 
          4) Change line ## in the code that works for your HPC system.
        ```
-       bash multi_res_run.sh -cutoff 20 -frame_start 1 -frame_end 50 -path /home/leem/glyco/multiframes -glycan BMA,AMA,BGL -num_proc 28 -freesasa /data/leem/freesasa 
+       bash multi_glyco.sh -cutoff 20 -frame_start 1 -frame_end 50 -path /home/leem/glyco/multiframes -glycan BMA,AMA,BGL -num_proc 28 -freesasa /data/leem/freesasa 
        ```
        - Average number of glycan atoms over multiple frames: Once you finish calculating number of glycan atoms per each frame, you can average "res_count.txt" over the multiple frames. You have to run it in where all directories, (e.g., "frames") are located. ($WORKING_DIR/$CUTOFF/res/)<br /> 
        ```
