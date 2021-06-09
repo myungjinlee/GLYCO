@@ -60,7 +60,7 @@ GLYCO is a program to calculate number of glycan atoms per surface residue of pr
        Once you calculate buried surface area of your epitope and divide ep_glysum by the buried surface area, you can get epitope-glycan coverage. Calculating buried surface area is not provided by GLYCO, but there are many ways you can estimate the epitope-buried surface area such as Pisa(https://www.ebi.ac.uk/msd-srv/prot_int/cgi-bin/piserver) or making your own script with FreeSASA output. 
  
    - 3.2. Multiframes: If you have multiple frames of pdb files, you can submit multiple jobs in your HPC system. <br />
-     - 3.1.1. Glycan atoms of each residues:<br />
+     - 3.1.1. Glycan atoms of each residues - module: "res":<br />
        - Count number of glycan atoms
          1) Input PDBs should be named as frame_INDEX.pdb (e.g., frame_1.pdb, frame_2.pdb) and located in folder "input"
          2) The "input" folder, "template" folder, and glyco.py should be in your current working directory. 
@@ -80,7 +80,7 @@ GLYCO is a program to calculate number of glycan atoms per surface residue of pr
        python3 bfactor.py ave_res_count.txt frame_1.pdb
        ```
        You can open the output "frame_1_bfactor.pdb" with PyMOL to display the glycan coverage per protein surface residue. 
-     - 3.1.2. Glycan atoms of epitope regions:<br />
+     - 3.1.2. Glycan atoms of epitope regions - module: "ep":<br />
        - Count number of glycan atoms per epitope residue
          1) Should follow the same instruction in Section 3.1.1. 1)-4).
          2) The script groups several jobs in one bundle and submit each bundled job in one node. You should specify the number of jobs for a bundle in argument "-frame_gap". (Each epitope-glycan coverage normally finishes in a short time, which may reduce the efficiency of calculation in HPC system if each job was distributed per node. In this case, bundling can solve the problem.)
