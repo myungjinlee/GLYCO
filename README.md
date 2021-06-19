@@ -49,7 +49,7 @@ GLYCO is a program to calculate number of glycan atoms per surface residue of pr
        
        - Calculate number of glycan atoms of epitope residues<br />
        ```
-       python3 glyco.py -pdb 5fyl.pdb -cutoff 20 -module ep -glycan BMA,AMA,BGL -num_proc 28 -epitope epitope.txt 
+       python3 glyco.py -pdb 5fyl.pdb -cutoff 20 -module ep -glycan BMA,AMA,BGL -num_proc 28 -probe 1.4 -surf_cutoff 30 -epitope epitope.txt 
        ```
        *epitope.txt should be in the following format: residue name, chain ID, residue number<br />
          (epitope.txt)<br />
@@ -69,7 +69,7 @@ GLYCO is a program to calculate number of glycan atoms per surface residue of pr
          3) The current working directory in 2) should be entered in the argument "-path". 
          4) Change line ## in the code that works for your HPC system.
        ```
-       bash multi_glyco.sh -cutoff 20 -frame_start 1 -frame_end 50 -path /home/leem/glyco/multiframes -glycan BMA,AMA,BGL -num_proc 28 -freesasa /data/leem/freesasa -module res
+       bash multi_glyco.sh -cutoff 20 -frame_start 1 -frame_end 50 -path /home/leem/glyco/multiframes -glycan BMA,AMA,BGL -num_proc 28 -freesasa /data/leem/freesasa -module res -probe 1.4 -surf_cutoff 30
        ```
        - Average number of glycan atoms over multiple frames: Once you finish calculating number of glycan atoms per each frame, you can average "res_count.txt" over the multiple frames. You have to run it in where all directories, (e.g., "frames") are located. ($WORKING_DIR/$CUTOFF/res/)<br /> 
        ```
@@ -87,7 +87,7 @@ GLYCO is a program to calculate number of glycan atoms per surface residue of pr
          1) Should follow the same instruction in Section 3.1.1. 1)-4).
          2) The script groups several jobs in one bundle and submit each bundled job in one node. You should specify the number of jobs for a bundle in argument "-frame_gap". (Each epitope-glycan coverage normally finishes in a short time, which may reduce the efficiency of calculation in HPC system if each job was distributed per node. In this case, bundling can solve the problem.)
        ```
-       bash multi_glyco.sh -cutoff 20 -frame_start 1 -frame_end 50 -frame_gap 10 -module ep -path /home/leem/glyco/multiframes -glycan BMA,AMA,BGL -num_proc 28 -epitope /home/leem/glyco/multiframes/epitope/epitope.txt
+       bash multi_glyco.sh -cutoff 20 -frame_start 1 -frame_end 50 -frame_gap 10 -module ep -path /home/leem/glyco/multiframes -glycan BMA,AMA,BGL -num_proc 28 -probe 1.4 -surf_cutoff 30 -epitope /home/leem/glyco/multiframes/epitope/epitope.txt 
        ```
        - Average number of glycan atoms over multiple frames: Once you finish calculating number of glycan atoms per each frame, you can average "ep_glysum.txt" over the multiple frames. You have to run it in where all directories, (e.g., "frames") are located. ($WORKING_DIR/$CUTOFF/ep/)<br /> 
        ```
