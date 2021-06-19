@@ -25,7 +25,9 @@ GLYCO is a program to calculate number of glycan atoms per surface residue of pr
        &nbsp; &nbsp; &nbsp; -frame_start&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;index of first frame<br />
        &nbsp; &nbsp; &nbsp; -frame_end&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; index of last frame<br />
        &nbsp; &nbsp; &nbsp; -frame_gap&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; number of frames to bundle<br />
-       &nbsp; &nbsp; &nbsp; -num_proc&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;number of CPU cores to allocate<br />
+       &nbsp; &nbsp; &nbsp; -num_proc&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;number of CPU cores to allocate(optional)<br />
+       &nbsp; &nbsp; &nbsp; -probe&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;probe radius(optional) (1.4 A by default)<br />
+       &nbsp; &nbsp; &nbsp; -sur_cutoff&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;cutoff to define surface (optional) (30 A^2 by default)<br />
    &nbsp;&nbsp;&nbsp;------------------------------------------------------------------<br />
    
    - 3.1. A single frame (PDB): If you have a single PDB file, you should follow below.<br />
@@ -33,7 +35,7 @@ GLYCO is a program to calculate number of glycan atoms per surface residue of pr
      
        - Count number of glycan atoms for each surface residue on your protein<br />
        ```
-       python3 glyco.py -pdb 5fyl.pdb -cutoff 20 -module res -glycan BMA,AMA,BGL -num_proc 28 -freesasa /home/lee/freesasa 
+       python3 glyco.py -pdb 5fyl.pdb -cutoff 20 -module res -glycan BMA,AMA,BGL -num_proc 28 -freesasa /home/lee/freesasa -probe 1.4 -surf_cutoff 30
        ```
        There are a bunch of output files, but you want to focus on "res_count.txt" that has number of glycan atoms per residue.<br />
        
