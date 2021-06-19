@@ -26,7 +26,7 @@ GLYCO is a program to calculate number of glycan atoms per surface residue of pr
        &nbsp; &nbsp; &nbsp; -frame_end&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; index of last frame<br />
        &nbsp; &nbsp; &nbsp; -frame_gap&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; number of frames to bundle<br />
        &nbsp; &nbsp; &nbsp; -num_proc&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;(optional)number of CPU cores to allocate (maximum number of cores by default)<br />
-       &nbsp; &nbsp; &nbsp; -probe &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;(optional)probe radius (1.4 A by default)<br />
+       &nbsp; &nbsp; &nbsp; -probe &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp(optional)probe radius (1.4 A by default)<br />
        &nbsp; &nbsp; &nbsp; -sur_cutoff&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;(optional)cutoff to define surface (30 A^2 by default)<br />
    &nbsp;&nbsp;&nbsp;------------------------------------------------------------------<br />
    
