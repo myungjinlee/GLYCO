@@ -61,11 +61,11 @@ GLYCO is a program to calculate number of glycan atoms per surface residue of pr
        The output is "ep_glysum.txt" which has summation of number of glycan atoms of the input epitope residues. This value excludes the overlapped, redundant glycan atoms shared among an epitope. 
        Once you calculate buried surface area of your epitope and divide ep_glysum by the buried surface area, you can get epitope-glycan coverage. Calculating buried surface area is not provided by GLYCO, but there are many ways you can estimate the epitope-buried surface area such as Pisa(https://www.ebi.ac.uk/msd-srv/prot_int/cgi-bin/piserver) or making your own script with FreeSASA output. 
  
-   - 3.2. Multiframes: If you have multiple frames of pdb files, you can submit multiple jobs in your HPC system. <br />
+   - 3.2. Multiframes: If you have multiple frames of pdb files, you can submit multiple jobs distributing  <br />
      - 3.1.1. Glycan atoms of each residues - module: "res":<br />
        - Count number of glycan atoms
          1) Input PDBs should be named as frame_INDEX.pdb (e.g., frame_1.pdb, frame_2.pdb) and located in folder "input"
-         2) The "input" folder, "template" folder, and glyco.py should be in your current working directory. 
+         2) The "input" folder and glyco.py should be in your current working directory. 
          3) The current working directory in 2) should be entered in the argument "-path". 
          4) Change line ## in the code that works for your HPC system.
        ```
