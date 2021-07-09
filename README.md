@@ -36,15 +36,11 @@ GLYCO is a program to calculate number of glycan atoms per surface residue of pr
      
        - Count number of glycan atoms for each surface residue on your protein<br />
        ```
-       python3 glyco.py -pdb 5fyl.pdb -cutoff 20 -module res -glycan BMA,AMA,BGL -num_proc 28 -freesasa /home/lee/freesasa -probe 1.4 -surf_cutoff 30
+       python3 glyco.py -pdb 5fyl.pdb -cutoff 20 -module res -glycan BMA,AMA,BGL -num_proc_in 28 -freesasa /home/lee/freesasa -probe 1.4 -surf_cutoff 30 -out_folder output
        ```
-       There are a bunch of output files, but you want to focus on "res_count.txt" that has number of glycan atoms per residue.<br />
-       
-       - You can visualize it with bfactor script as shown below.<br /> 
-       ```
-       python3 bfactor.py res_count.txt frame_1.pdb
-       ```
-       You can open the output "frame_1_bfactor.pdb" with PyMOL. 
+       - Output<br /> 
+       5fyl_res_count.txt: number of glycan atoms per residue
+       5fyl_bfactor.pdb: PDB file with glycan atoms as b-factor (You can visualize it with PyMOL.) 
        
      - 3.1.2. Glycan atoms of epitope residues - module: "ep":<br />
        
