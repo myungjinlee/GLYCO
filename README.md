@@ -34,7 +34,7 @@ GLYCO is a program to calculate number of glycan atoms per surface residue of pr
      
    If you want to ignore silence warnings from Python, you could use ``` python3 -W glyco.py ``` and add argments after that.<br />
    
-   - 3.1. A single frame (PDB): If you have a single PDB file, you should follow below.<br />
+   - 3.1. A single frame (PDB)<br />
      - 3.1.1. Glycan atoms of each residue -  module: "res":<br />
      
        - Count number of glycan atoms for each surface residue on your protein<br />
