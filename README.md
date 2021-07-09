@@ -67,7 +67,7 @@ GLYCO is a program to calculate number of glycan atoms per surface residue of pr
  
    - 3.2. Multiframes: If you have multiple frames of pdb files, you can submit multiple jobs in parallel.<br />
      - 3.1.1. Glycan atoms of each residues - module: "res":<br />
-       - Count number of glycan atoms
+       - Count number of glycan atoms<br />
         *Input PDBs should be named as frame_INDEX.pdb (e.g., frame_1.pdb, frame_2.pdb).
         *num_proc_in x num_parallel should not exceed the total(available) number of CPUs.
        ```
