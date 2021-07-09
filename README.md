@@ -31,6 +31,7 @@ GLYCO is a program to calculate number of glycan atoms per surface residue of pr
        &nbsp; &nbsp; &nbsp; -average &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; (optional)(if multiple PDBs from the same structure)to average glycan numbers over multiple PDBs<br />
    &nbsp;&nbsp;&nbsp;------------------------------------------------------------------<br />
    
+     *If you want to ignore silence warnings from Python, you could do ``` python3 -W glyco.py ``` and add arguments after this.
    - 3.1. A single frame (PDB): If you have a single PDB file, you should follow below.<br />
      - 3.1.1. Glycan atoms of each residue -  module: "res":<br />
      
@@ -65,14 +66,15 @@ GLYCO is a program to calculate number of glycan atoms per surface residue of pr
      - 3.1.1. Glycan atoms of each residues - module: "res":<br />
        - Count number of glycan atoms
         *Input PDBs should be named as frame_INDEX.pdb (e.g., frame_1.pdb, frame_2.pdb).
+        *num_proc_in x num_parallel should not exceed the total(available) number of CPUs.
        ```
        python3 glyco.py in_folder input -cutoff 20 -module res -glycan BMA,AMA,BGL -freesasa /data/leem/freesasa -num_proc_in 22 -num_parallel 2 -out_folder results -average
        ```
        - Output<br /> 
-       frame_INDEX_res_glycount.txt: number of glycan atoms per residue <br />
-       frame_INDEX_bfactor.pdb: PDB file with glycan atoms as b-factor (You can visualize it with PyMOL.) <br />
-       ave_res_glycount.txt: averaged number of glycan atoms per residue <br /> 
-       frame_1_ave_bfactor.pdb: PDB file with averaged glycan atoms over the multiple frames as b-factor (Visualize it with PyMOL.) <br />
+        - frame_INDEX_res_glycount.txt: number of glycan atoms per residue <br />
+        - frame_INDEX_bfactor.pdb: PDB file with glycan atoms as b-factor (You can visualize it with PyMOL.) <br />
+        - ave_res_glycount.txt: averaged number of glycan atoms per residue <br /> 
+        - frame_1_ave_bfactor.pdb: PDB file with averaged glycan atoms over the multiple frames as b-factor (Visualize it with PyMOL.) <br />
      
      - 3.1.2. Glycan atoms of epitope regions - module: "ep":<br />
        - Count number of glycan atoms per epitope residue
