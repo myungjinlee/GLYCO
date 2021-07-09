@@ -26,7 +26,7 @@ GLYCO is a program to calculate number of glycan atoms per surface residue of pr
        &nbsp; &nbsp; &nbsp; -epitope&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;(if module is "ep")File with epitope residues<br />
        &nbsp; &nbsp; &nbsp; -in_folder &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(if multiple PDBs)Input folder with multiple PDBs<br />
        &nbsp; &nbsp; &nbsp; -out_folder&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Output folder to save results<br />
-       &nbsp; &nbsp; &nbsp; -num_parallel &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; (if multiple PDBs)number of frames to submit in parallel<br />
+       &nbsp; &nbsp; &nbsp; -num_parallel &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; (if multiple PDBs)number of frames to submit in parallel (1 by default)<br />
        &nbsp; &nbsp; &nbsp; -num_proc_in&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; (optional)number of CPU cores to allocate (maximum number of cores by default)<br />
        &nbsp; &nbsp; &nbsp; -average &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; (optional)(if multiple PDBs from the same structure)to average glycan numbers over multiple PDBs<br />
    &nbsp;&nbsp;&nbsp;------------------------------------------------------------------<br />
@@ -38,7 +38,7 @@ GLYCO is a program to calculate number of glycan atoms per surface residue of pr
        ```
        python3 glyco.py -pdb 5fyl.pdb -cutoff 20 -module res -glycan BMA,AMA,BGL -freesasa /home/lee/freesasa -out_folder output 
        ```
-       You can add arguments -probe 1.5 -sur_cutoff 40 -num_proc_in 28 as needed <br />
+       You can add arguments for example, -probe 1.5 -sur_cutoff 40 -num_proc_in 28 as needed <br />
        - Output<br /> 
        5fyl_res_count.txt: number of glycan atoms per residue<br />
        5fyl_bfactor.pdb: PDB file with glycan atoms as b-factor (You can visualize it with PyMOL.) <br />
