@@ -39,8 +39,8 @@ GLYCO is a program to calculate number of glycan atoms per surface residue of pr
        python3 glyco.py -pdb 5fyl.pdb -cutoff 20 -module res -glycan BMA,AMA,BGL -num_proc_in 28 -freesasa /home/lee/freesasa -probe 1.4 -surf_cutoff 30 -out_folder output
        ```
        - Output<br /> 
-       5fyl_res_count.txt: number of glycan atoms per residue
-       5fyl_bfactor.pdb: PDB file with glycan atoms as b-factor (You can visualize it with PyMOL.) 
+       5fyl_res_count.txt: number of glycan atoms per residue<br />
+       5fyl_bfactor.pdb: PDB file with glycan atoms as b-factor (You can visualize it with PyMOL.) <br />
        
      - 3.1.2. Glycan atoms of epitope residues - module: "ep":<br />
        
