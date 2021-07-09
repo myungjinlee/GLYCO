@@ -21,13 +21,14 @@ GLYCO is a program to calculate number of glycan atoms per surface residue of pr
        &nbsp; &nbsp; &nbsp; -module&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; res or ep<br />
        &nbsp; &nbsp; &nbsp; -glycan&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; list glycan names with comma separators<br />
        &nbsp; &nbsp; &nbsp; -freesasa&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;path of FreeSASA executable<br />
-       &nbsp; &nbsp; &nbsp; -path&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; path of current working directory<br />
-       &nbsp; &nbsp; &nbsp; -frame_start&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;index of first frame<br />
-       &nbsp; &nbsp; &nbsp; -frame_end&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; index of last frame<br />
-       &nbsp; &nbsp; &nbsp; -frame_gap&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; number of frames to bundle<br />
-       &nbsp; &nbsp; &nbsp; -num_proc&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;(optional)number of CPU cores to allocate (maximum number of cores by default)<br />
+       &nbsp; &nbsp; &nbsp; -epitope&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; file with epitope residues<br />
+       &nbsp; &nbsp; &nbsp; -in_folder (if multiple PDBs)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;Input folder with multiple PDBs<br />
+       &nbsp; &nbsp; &nbsp; -out_folder&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; Output folder to save results<br />
+       &nbsp; &nbsp; &nbsp; -num_parallel (if multiple PDBs)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; number of frames to submit in parallel<br />
+       &nbsp; &nbsp; &nbsp; -num_proc_in&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;(optional)number of CPU cores to allocate (maximum number of cores by default)<br />
        &nbsp; &nbsp; &nbsp; -probe &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;(optional)probe radius (1.4 A by default)<br />
        &nbsp; &nbsp; &nbsp; -sur_cutoff&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;(optional)cutoff to define surface (30 A^2 by default)<br />
+       &nbsp; &nbsp; &nbsp; -average (if multiple PDBs from the same structure)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;(optional)to average glycan numbers over multiple PDBs<br />
    &nbsp;&nbsp;&nbsp;------------------------------------------------------------------<br />
    
    - 3.1. A single frame (PDB): If you have a single PDB file, you should follow below.<br />
