@@ -38,16 +38,16 @@ GLYCO is a program to calculate number of glycan atoms per surface residue of pr
        ```
        python3 glyco.py -pdb 5fyl.pdb -cutoff 20 -module res -glycan BMA,AMA,BGL -freesasa /home/lee/freesasa -out_folder output 
        ```
-       You can add arguments for example, ```-probe 1.5 -sur_cutoff 40 -num_proc_in 28  ```as needed <br />
+       You can add arguments for example, ```-probe 1.5 -sur_cutoff 40 -num_proc_in 28  ```as needed. <br />
        - Output<br /> 
-       5fyl_res_count.txt: number of glycan atoms per residue<br />
+       5fyl_res_glycount.txt: number of glycan atoms per residue<br />
        5fyl_bfactor.pdb: PDB file with glycan atoms as b-factor (You can visualize it with PyMOL.) <br />
        
      - 3.1.2. Glycan atoms of epitope residues - module: "ep":<br />
        
        - Calculate number of glycan atoms of epitope residues<br />
        ```
-       python3 glyco.py -pdb 5fyl.pdb -cutoff 20 -module ep -glycan BMA,AMA,BGL -num_proc 28 -probe 1.4 -surf_cutoff 30 -epitope epitope.txt 
+       python3 glyco.py -pdb 5fyl.pdb -cutoff 20 -module ep -glycan BMA,AMA,BGL -epitope epitope.txt -out_folder output
        ```
        *epitope.txt should be in the following format: residue name, chain ID, residue number<br />
          (epitope.txt)<br />
@@ -56,36 +56,29 @@ GLYCO is a program to calculate number of glycan atoms per surface residue of pr
           MET&nbsp; B&nbsp; 196<br />
           ASP&nbsp; C&nbsp; 305<br />
        
-       The output is "ep_glysum.txt" which has summation of number of glycan atoms of the input epitope residues. This value excludes the overlapped, redundant glycan atoms shared among an epitope. 
+       You can also add arguments such as ```-probe 1.4 -sur_cutoff 30 -num_proc 28``` as needed.  <br />
+        - Output<br /> 
+        ep_glysum.txt: summation of number of glycan atoms of the input epitope residues. This value excludes the overlapped, redundant glycan atoms shared among an epitope. <br />
        Once you calculate buried surface area of your epitope and divide ep_glysum by the buried surface area, you can get epitope-glycan coverage. Calculating buried surface area is not provided by GLYCO, but there are many ways you can estimate the epitope-buried surface area such as Pisa(https://www.ebi.ac.uk/msd-srv/prot_int/cgi-bin/piserver) or making your own script with FreeSASA output. 
  
-   - 3.2. Multiframes: If you have multiple frames of pdb files, you can submit multiple jobs distributing  <br />
+   - 3.2. Multiframes: If you have multiple frames of pdb files, you can submit multiple jobs in parallel.<br />
      - 3.1.1. Glycan atoms of each residues - module: "res":<br />
        - Count number of glycan atoms
-         1) Input PDBs should be named as frame_INDEX.pdb (e.g., frame_1.pdb, frame_2.pdb) and located in folder "input"
-         2) The "input" folder and glyco.py should be in your current working directory. 
-         3) The current working directory in 2) should be entered in the argument "-path". 
-         4) Change line ## in the code that works for your HPC system.
+        *Input PDBs should be named as frame_INDEX.pdb (e.g., frame_1.pdb, frame_2.pdb).
        ```
-       bash multi_glyco.sh -cutoff 20 -frame_start 1 -frame_end 50 -path /home/leem/glyco/multiframes -glycan BMA,AMA,BGL -freesasa /data/leem/freesasa -module res -probe 1.4 -surf_cutoff 30
+       python3 glyco.py in_folder input -cutoff 20 -module res -glycan BMA,AMA,BGL -freesasa /data/leem/freesasa -num_proc_in 22 -num_parallel 2 -out_folder results -average
        ```
-       - Average number of glycan atoms over multiple frames: Once you finish calculating number of glycan atoms per each frame, you can average "res_count.txt" over the multiple frames. You have to run it in where all directories, (e.g., "frames") are located. ($WORKING_DIR/$CUTOFF/res/)<br /> 
-       ```
-       python3 ave_res.py -frame_start 1 -frame_end 50 
-       ```
-       The output is "ave_res_count.txt"
+       - Output<br /> 
+       frame_INDEX_res_glycount.txt: number of glycan atoms per residue <br />
+       frame_INDEX_bfactor.pdb: PDB file with glycan atoms as b-factor (You can visualize it with PyMOL.) <br />
+       ave_res_glycount.txt: averaged number of glycan atoms per residue <br /> 
+       frame_1_ave_bfactor.pdb: PDB file with averaged glycan atoms over the multiple frames as b-factor (Visualize it with PyMOL.) <br />
      
-       - You can visualize it with bfactor script as shown below.<br /> 
-       ```
-       python3 bfactor.py ave_res_count.txt frame_1.pdb
-       ```
-       You can open the output "frame_1_bfactor.pdb" with PyMOL to display the glycan coverage per protein surface residue. 
      - 3.1.2. Glycan atoms of epitope regions - module: "ep":<br />
        - Count number of glycan atoms per epitope residue
-         1) Should follow the same instruction in Section 3.1.1. 1)-4).
          2) The script groups several jobs in one bundle and submit each bundled job in one node. You should specify the number of jobs for a bundle in argument "-frame_gap". (Each epitope-glycan coverage normally finishes in a short time, which may reduce the efficiency of calculation in HPC system if each job was distributed per node. In this case, bundling can solve the problem.)
        ```
-       bash multi_glyco.sh -cutoff 20 -frame_start 1 -frame_end 50 -frame_gap 10 -module ep -path /home/leem/glyco/multiframes -glycan BMA,AMA,BGL -num_proc 28 -probe 1.4 -surf_cutoff 30 -epitope /home/leem/glyco/multiframes/epitope/epitope.txt 
+       python3 glyco.py -cutoff 20 -frame_start 1 -frame_end 50 -frame_gap 10 -module ep -path /home/leem/glyco/multiframes -glycan BMA,AMA,BGL -num_proc 28 -probe 1.4 -surf_cutoff 30 -epitope /home/leem/glyco/multiframes/epitope/epitope.txt 
        ```
        - Average number of glycan atoms over multiple frames: Once you finish calculating number of glycan atoms per each frame, you can average "ep_glysum.txt" over the multiple frames. You have to run it in where all directories, (e.g., "frames") are located. ($WORKING_DIR/$CUTOFF/ep/)<br /> 
        ```
