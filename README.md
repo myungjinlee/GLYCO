@@ -77,7 +77,6 @@ GLYCO is a program to calculate number of glycan atoms per surface residue of pr
         -- PREFIX_INDEX_res_glycount.txt: number of glycan atoms per residue <br />
         -- PREFIX_INDEX_bfactor.pdb: PDB file with glycan atoms as b-factor (You can visualize it with PyMOL.) <br />
         -- ave_res_glycount.txt: averaged number of glycan atoms per residue <br /> 
-        -- PREFIX_1_ave_bfactor.pdb: PDB file with averaged glycan atoms over the multiple frames as b-factor (Visualize it with PyMOL.) <br />
      
      - 3.1.2. Glycan atoms of epitope regions - module: "ep":<br />
        - Count number of glycan atoms per epitope residue
