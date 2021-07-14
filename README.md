@@ -60,7 +60,6 @@ GLYCO is a program to calculate number of glycan atoms per surface residue of pr
           MET&nbsp; B&nbsp; 196<br />
           ASP&nbsp; C&nbsp; 305<br />
        
-       You can also add arguments such as ```-probe 1.4 -sur_cutoff 30 -num_proc 28``` as needed.  <br />
         - Output<br /> 
         -- ep_glysum.txt: summation of number of glycan atoms of the input epitope residues. This value excludes the overlapped, redundant glycan atoms shared among an epitope. <br /><br />
        Once you calculate buried surface area of your epitope and divide ep_glysum by the buried surface area, you can get epitope-glycan coverage. Calculating buried surface area is not provided by GLYCO, but there are many ways you can estimate the epitope-buried surface area such as Pisa(https://www.ebi.ac.uk/msd-srv/prot_int/cgi-bin/piserver) or making your own script with FreeSASA output. 
@@ -82,7 +81,7 @@ GLYCO is a program to calculate number of glycan atoms per surface residue of pr
        - Count number of glycan atoms per epitope residue
          
        ```
-       python3 glyco.py -in_folder input -cutoff 20 -module ep -glycan BMA,AMA,BGL -num_proc_in 28 -probe 1.4 -surf_cutoff 30 -epitope /home/leem/glyco/multiframes/epitope/epitope.txt -out_folder results -average
+       python3 glyco.py -in_folder input -cutoff 20 -module ep -glycan BMA,AMA,BGL -num_proc_in 28 -num_parallel 1 -epitope /home/leem/glyco/multiframes/epitope/epitope.txt -out_folder results -average
        ```
        - Output<br /> 
         -- ave_ep_glycount.txt: averaged number of glycan atoms per epitope <br />  
