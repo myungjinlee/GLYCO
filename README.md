@@ -69,7 +69,7 @@ GLYCO is a program to calculate number of glycan atoms per surface residue of pr
      - 3.1.1. Glycan atoms of each residues - module: "res":<br />
        - Count number of glycan atoms<br />
         *Input PDBs should be named as PREFIX_INDEX.pdb (e.g., frame_1.pdb, frame_2.pdb).<br />
-        *num_proc_in x num_parallel should not exceed the total(available) number of CPUs.<br />
+        *(num_proc_in x num_parallel) should not exceed the total/available number of CPUs in your system.<br />
        ```
        python3 glyco.py in_folder input -cutoff 20 -module res -glycan BMA,AMA,BGL -freesasa /data/leem/freesasa -num_proc_in 22 -num_parallel 2 -out_folder results -average
        ```
@@ -84,11 +84,8 @@ GLYCO is a program to calculate number of glycan atoms per surface residue of pr
        ```
        python3 glyco.py -cutoff 20 -frame_start 1 -frame_end 50 -frame_gap 10 -module ep -path /home/leem/glyco/multiframes -glycan BMA,AMA,BGL -num_proc 28 -probe 1.4 -surf_cutoff 30 -epitope /home/leem/glyco/multiframes/epitope/epitope.txt 
        ```
-       - Average number of glycan atoms over multiple frames: Once you finish calculating number of glycan atoms per each frame, you can average "ep_glysum.txt" over the multiple frames. You have to run it in where all directories, (e.g., "frames") are located. ($WORKING_DIR/$CUTOFF/ep/)<br /> 
-       ```
-       python3 ave_ep.py -frame_start 1 -frame_end 50 
-       ```
-       The output is "ave_ep_gly.txt"     
+       - Output<br /> 
+        -- ave_ep_glycount.txt: averaged number of glycan atoms per epitope <br />  
        
  Please report any bugs or questions to Myungjin Lee, Ph.D. (myungjin.lee@nih.gov)
       
