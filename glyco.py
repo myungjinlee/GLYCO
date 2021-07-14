@@ -137,18 +137,19 @@ def gen_gly_dict(inpdb, input_glycan):
     print('PROGRESS: Generating a glycan dictionary') 
     outdict = {}
     for line in open(inpdb):
-        if line[17:21].strip() in input_glycan:
-            resname = line[17:21].strip()
-            chain = line[21].strip()
-            resid = line[22:28].strip()
-            atomnum = line[6:11].strip()
-            atomtype = line[12:16].strip()
-            key = (atomnum, atomtype, resname, chain, resid)
-            x = float(line[30:38].strip())
-            y = float(line[38:46].strip())
-            z = float(line[46:54].strip())
-            if atomtype.find('H') == -1:
-                outdict[key] = [x, y, z]
+        if line[0:4] == 'ATOM' or line[0:4] == 'HETA':
+            if line[17:21].strip() in input_glycan:
+                resname = line[17:21].strip()
+                chain = line[21].strip()
+                resid = line[22:28].strip()
+                atomnum = line[6:11].strip()
+                atomtype = line[12:16].strip()
+                key = (atomnum, atomtype, resname, chain, resid)
+                x = float(line[30:38].strip())
+                y = float(line[38:46].strip())
+                z = float(line[46:54].strip())
+                if atomtype.find('H') == -1:
+                    outdict[key] = [x, y, z]
     return outdict
 
 
