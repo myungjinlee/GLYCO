@@ -71,7 +71,7 @@ GLYCO is a program to calculate number of glycan atoms per surface residue of pr
         *Input PDBs should be named as PREFIX_INDEX.pdb (e.g., frame_1.pdb, frame_2.pdb).<br />
         *(num_proc_in x num_parallel) should not exceed the total/available number of CPUs in your system.<br />
        ```
-       python3 glyco.py in_folder input -cutoff 20 -module res -glycan BMA,AMA,BGL -freesasa /data/leem/freesasa -num_proc_in 22 -num_parallel 2 -out_folder results -average
+       python3 glyco.py -in_folder input -cutoff 20 -module res -glycan BMA,AMA,BGL -freesasa /data/leem/freesasa -num_proc_in 22 -num_parallel 2 -out_folder results -average
        ```
        - Output<br /> 
         -- PREFIX_INDEX_res_glycount.txt: number of glycan atoms per residue <br />
@@ -80,9 +80,9 @@ GLYCO is a program to calculate number of glycan atoms per surface residue of pr
      
      - 3.1.2. Glycan atoms of epitope regions - module: "ep":<br />
        - Count number of glycan atoms per epitope residue
-         2) The script groups several jobs in one bundle and submit each bundled job in one node. You should specify the number of jobs for a bundle in argument "-frame_gap". (Each epitope-glycan coverage normally finishes in a short time, which may reduce the efficiency of calculation in HPC system if each job was distributed per node. In this case, bundling can solve the problem.)
+         
        ```
-       python3 glyco.py -cutoff 20 -frame_start 1 -frame_end 50 -frame_gap 10 -module ep -path /home/leem/glyco/multiframes -glycan BMA,AMA,BGL -num_proc 28 -probe 1.4 -surf_cutoff 30 -epitope /home/leem/glyco/multiframes/epitope/epitope.txt 
+       python3 glyco.py -in_folder input -cutoff 20 -module ep -glycan BMA,AMA,BGL -num_proc_in 28 -probe 1.4 -surf_cutoff 30 -epitope /home/leem/glyco/multiframes/epitope/epitope.txt -out_folder results -average
        ```
        - Output<br /> 
         -- ave_ep_glycount.txt: averaged number of glycan atoms per epitope <br />  
