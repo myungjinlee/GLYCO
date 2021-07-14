@@ -15,7 +15,7 @@ GLYCO is a program to calculate number of glycan atoms per surface residue of pr
 **3. Run GLYCO<br />**
    - GLYCO takes the following arguments. Depending on the module and number of frames you have, the required arguments vary:<br />
  
-   &nbsp;&nbsp;&nbsp;------------------------------------------------------------------------------------------------------------------------<br />
+   &nbsp;&nbsp;&nbsp;-----------------------------------------------------------------------------------------------------<br />
        &nbsp; &nbsp; &nbsp; -pdb&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; pdbname.pdb<br />
        &nbsp; &nbsp; &nbsp; -cutoff&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; cutoff in Angstrom<br />
        &nbsp; &nbsp; &nbsp; -module&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; res or ep<br />
@@ -29,7 +29,7 @@ GLYCO is a program to calculate number of glycan atoms per surface residue of pr
        &nbsp; &nbsp; &nbsp; -num_parallel &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; (if multiple PDBs)number of frames to submit in parallel (1 by default)<br />
        &nbsp; &nbsp; &nbsp; -num_proc_in&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; (optional)number of CPU cores to allocate (maximum number of cores by default)<br />
        &nbsp; &nbsp; &nbsp; -average &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; (optional)(if multiple PDBs from the same structure)to average glycan numbers over multiple PDBs<br />
-   &nbsp;&nbsp;&nbsp;------------------------------------------------------------------------------------------------------------------------<br />
+   &nbsp;&nbsp;&nbsp;-----------------------------------------------------------------------------------------------------<br />
  
      
    If you want to ignore silence warnings from Python, you could use ``` python3 -W glyco.py ``` and add argments after that.<br />
