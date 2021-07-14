@@ -1,6 +1,6 @@
 # GLYCO
 
-GLYCO is a program to calculate number of glycan atoms per surface residue of proteins ("res" module) and number of glycan atoms per epitope residues ("ep" module).
+GLYCO (GLYcan COverage) is a program to calculate glycan coverage of glycoproteins (e.g., number of glycan atoms per protein surface residues/epitope residues).
 
 **1. Before you run GLYCO: There are some requirements you may have to check before running the program.<br />**
    - 1.1. FreeSASA (https://freesasa.github.io/) and python3 should be installed.<br />
