@@ -7,7 +7,6 @@ GLYCO is a program to calculate number of glycan atoms per surface residue of pr
    - 1.2. Coordinate section of input PDB files should follow the standard ATOM/HETATM record format of PDB (http://www.wwpdb.org/documentation/file-format-content/format33/sect9.html) from column 1 to 54.<br />
    - 1.3. Protein residues in PDB files should be named as below. Especially, please check if your histidine is defined as one of below histidine names.<br />
     ALA ARG ASN ASP CYS GLN GLU GLY HSD HID HIS HIE ILE LEU LYS MET PHE PRO SER THR TRP TYR VAL<br />
-   - 1.4. Glycans in input PDB files should be defined as either ATOM or HETATM.<br />
 
 **2. Download GLYCO** 
    - Download glyco.py, template folder in your current working directory.<br />
