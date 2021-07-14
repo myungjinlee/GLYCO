@@ -490,24 +490,6 @@ def write_outputs(res_or_ep, count_dict, num_dict, final_dict, out_folder, prefi
         print(origin_pdb)
         print(out_folder + "/{}_bfactor.pdb".format(prefix))
         io.save(out_folder + "/{}_bfactor.pdb".format(prefix))
-          
- #       os.system("cp " + origin_pdb + ' ' + out_folder + "/" + prefix + '_bfactor.pdb')
- #       for line in fileinput.input(out_folder + "/" + prefix + '_bfactor.pdb', inplace=1):
- #           line = line.strip()
- #           if line.startswith('ATOM'):
- #               origin_line = line
- #               key = (str(line[17:21].strip()),str(line[21:22].strip()),str(line[22:26].strip()))
- #               if key in final_dict.keys():
- #                   count = len(final_dict[key])
- #                   val = str('{:>7.2f}'.format(count))
- #                   new_line = origin_line[:60] + val + origin_line[67:]
- #                   print(new_line)
- #               else:
- #                   val = str('{:>7.2f}'.format(0))
- #                   new_line = origin_line[:60] + val + origin_line[66:]
- #                   print(new_line)
- #           else:
- #               print(line)
 
     elif res_or_ep == 'ep':
         with open(out_folder + "/" + prefix + '_ep_glysum.txt', 'w') as f_obj_ep:        
@@ -589,9 +571,6 @@ def average_frames_ep(out_folder):
 # --------------------------------------------------------------------------------- #
 #                                      MAIN                                         #
 # --------------------------------------------------------------------------------- #
-
-
- 
 
 def main():
     print("Starting")
