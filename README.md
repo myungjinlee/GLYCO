@@ -40,7 +40,7 @@ GLYCO (GLYcan COverage) is a program to calculate glycan coverage of glycoprotei
        ```
        python3 glyco.py -pdb 5fyl.pdb -cutoff 20 -module res -glycan BMA,AMA,BGL -freesasa /home/lee/freesasa -out_folder output 
        ```
-       You can add arguments for example, ```-probe 1.5 -sur_cutoff 40 -num_proc_in 28  ```as needed. <br />
+       You can add arguments ```-probe -sur_cutoff -num_proc_in  ```as needed. <br />
        
        - Output<br /> 
        -- 5fyl_res_glycount.txt: number of glycan atoms per residue<br />
@@ -52,6 +52,7 @@ GLYCO (GLYcan COverage) is a program to calculate glycan coverage of glycoprotei
        ```
        python3 glyco.py -pdb 5fyl.pdb -cutoff 20 -module ep -glycan BMA,AMA,BGL -epitope epitope.txt -out_folder output
        ```
+       You can add argument ```-num_proc_in  ```as needed. <br />
        *epitope.txt should be in the following format: residue name, chain ID, residue number<br />
          (epitope.txt)<br />
           ARG&nbsp; A&nbsp; 309<br />
