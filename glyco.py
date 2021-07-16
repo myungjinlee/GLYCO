@@ -73,17 +73,16 @@ def outermost(inpdb, infloat, freesasa_path, inprobe, out_folder):
                 resname = line[17:20].strip()
                 chain = line[21:22].strip()
                 resid = line[22:28].strip()
-            
-                for k in keys:                    
+
+                for k in keys:
                 # ATOM  14823  N   ARG A1000      -8.710  -0.790   7.690
-                   if k[0] == resname and k[1] == chain and k[2] == resid: 
+                   if k[0] == resname and k[1] == chain and k[2] == resid:
                         key = (atomnum, atomtype, resname, chain, resid)
                         x = float(line[30:38].strip())
                         y = float(line[38:46].strip())
                         z = float(line[46:54].strip())
                         if atomtype.find('H') == -1:
                             outdict[key] = [x, y, z]
-    
     return outdict, surf_dict
 
 
@@ -108,7 +107,7 @@ def input_to_dict(infile, indict):
 def gen_pro_dict(inpdb):
     print('PROGRESS: Generating a protein dictionary')
     outdict1 = {}
-    outdict2 = defaultdict(list) 
+    outdict2 = defaultdict(list)
     for line in open(inpdb):
         if line[0:4] == 'ATOM':
             if line[17:20] in ('ALA', 'ARG', 'ASN', 'ASP', 'CYS', 'GLN', 'GLU', 'GLY', 'HSD',
@@ -131,27 +130,31 @@ def gen_pro_dict(inpdb):
                     outdict2[x].append([y, z, key])  # to check crossing
     return outdict1, outdict2
 
-
 # Generate a glycan dictionary that has glycan keys and values as glycan coordinate
-def gen_gly_dict(inpdb, input_glycan):
-    print('PROGRESS: Generating a glycan dictionary') 
+def gen_gly_dict(struct, input_glycan):
+    print('PROGRESS: Generating a glycan dictionary')
     outdict = {}
-    for line in open(inpdb):
-        if line[0:4] == 'ATOM' or line[0:4] == 'HETA':
-            if line[17:21].strip() in input_glycan:
-                resname = line[17:21].strip()
-                chain = line[21].strip()
-                resid = line[22:28].strip()
-                atomnum = line[6:11].strip()
-                atomtype = line[12:16].strip()
-                key = (atomnum, atomtype, resname, chain, resid)
-                x = float(line[30:38].strip())
-                y = float(line[38:46].strip())
-                z = float(line[46:54].strip())
-                if atomtype.find('H') == -1:
-                    outdict[key] = [x, y, z]
+    # Loop thorugh pdb and update bfactor values
+    for model in struct:
+        # Loop through chains
+        for chain in model:
+            chain_name = chain.get_id()
+            # Loop through residues
+            for residue in chain:
+                # Get residues position
+                _, residue_num, residue_num_letter = residue.id
+                residue_num = str(residue_num) + residue_num_letter.strip()
+                if residue.resname in input_glycan:
+                    # Loop through atoms
+                    for atom in residue:
+                        atom_id =(residue.resname, chain_name, residue_num)
+                        atom_name = atom.get_id()
+                        atom_num = atom.get_serial_number()
+                        atom_coord = atom.get_coord()
+                        key = (str(atom_num), atom_name, residue.resname, chain_name, residue_num)
+                        if atom_name.find('H') == -1:
+                            outdict[key] = [atom_coord[0], atom_coord[1], atom_coord[2]]
     return outdict
-
 
 # Extract epitope residues from a dictionary and generate an epitope dictionary
 def ep_to_dict(inarr, indict):
@@ -339,9 +342,11 @@ def process_cmd_args():
 
 # Generate dictionaries with input files
 def preprocess_dicts(origin_pdb, sur_cutoff, input_glycan, input_epitope, res_or_ep, freesasa_path, inprobe, out_folder):
-    
+   
+    struct = get_struct(origin_pdb) 
     ori_pro_dict, pro_dict = gen_pro_dict(origin_pdb)
-    gly_dict = gen_gly_dict(origin_pdb, input_glycan)
+    
+    gly_dict = gen_gly_dict(struct, input_glycan)
 
     res_dict = {}
     if res_or_ep == 'res':
@@ -490,7 +495,7 @@ def write_outputs(res_or_ep, count_dict, num_dict, final_dict, out_folder, prefi
         print(origin_pdb)
         print(out_folder + "/{}_bfactor.pdb".format(prefix))
         io.save(out_folder + "/{}_bfactor.pdb".format(prefix))
-
+          
     elif res_or_ep == 'ep':
         with open(out_folder + "/" + prefix + '_ep_glysum.txt', 'w') as f_obj_ep:        
             total_glycan_list = []
@@ -571,6 +576,9 @@ def average_frames_ep(out_folder):
 # --------------------------------------------------------------------------------- #
 #                                      MAIN                                         #
 # --------------------------------------------------------------------------------- #
+
+
+ 
 
 def main():
     print("Starting")
