@@ -27,8 +27,6 @@ from concurrent.futures import ProcessPoolExecutor as Pool_out
 from tqdm import tqdm
 
 
-
-
 # ---------------------------------------------------------------------------------#
 #                                 Helper methods                                  #
 # ---------------------------------------------------------------------------------#
@@ -571,13 +569,9 @@ def average_frames_ep(out_folder):
     with open(out_folder + '/ave_ep_gly.txt', 'w') as file_obj:
         file_obj.write(str("{:>9.2f}".format(total_average)) + '\n')
 
-
-
 # --------------------------------------------------------------------------------- #
 #                                      MAIN                                         #
 # --------------------------------------------------------------------------------- #
-
-
  
 
 def main():
@@ -628,24 +622,9 @@ def main():
 if __name__ == "__main__":
     start = time.time()
  
-#    if not sys.warnoptions:
-#        warnings.simplefilter("ignore")
-
     main()
 
     end = time.time()
     print('TIME SPENT: ', str(datetime.timedelta(seconds=end-start)))
 
     
-"""
-# Debug inputs
-sur_cutoff = 30
-origin_pdb = "input/origin_frame_100_renumber-HXB2.pdb"
-dist_cutoff = 26
-input_glycan = ["BMA", "AMA", "BGLN"]
-res_or_ep = "res"
-input_epitope = None 
-freesasa_path = "/home/reveizm2/glyco_2/dependencies/freesasa"
-nproc_in = 28
-nproc_out = 1  
-"""
