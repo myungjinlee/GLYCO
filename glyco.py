@@ -302,7 +302,6 @@ def process_cmd_args():
             print("Please use either -pdb OR -in_folder.")
             sys.exit(1)
         
-         
         
     if args.average:
         if args.pdb is not None:
