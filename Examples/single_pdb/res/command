@@ -1,1 +1,0 @@
-python3 -W ignore glyco.py -pdb origin_frame_1_renumber-HXB2.pdb  -cutoff 26 -sur_cutoff 30 -module res -glycan BMA,AMA,BGL -freesasa /data/leem25/software/freesasa/bin/freesasa -out_folder output
