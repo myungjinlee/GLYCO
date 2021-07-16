@@ -1,0 +1,1 @@
+python3 glyco.py -pdb origin_frame_1_renumber-HXB2.pdb -cutoff 26 -sur_cutoff 30 -module ep -glycan BMA,AMA,BGL -epitope epitope.txt 

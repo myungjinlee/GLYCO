@@ -1,0 +1,1 @@
+python3 glyco.py -in_folder input -cutoff 26 -sur_cutoff 30 -out_folder output -num_parallel 5 -num_proc_in 9  -module ep -glycan BMA,AMA,BGL -epitope epitope.txt 
