@@ -18,7 +18,7 @@ GLYCO (GLYcan COverage) is a program to calculate glycan coverage of glycoprotei
        &nbsp; &nbsp; &nbsp; -cutoff&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; cutoff in $\mathring A$   $\text{\r \textit{g}}$ \AA Angstrom<br />
        &nbsp; &nbsp; &nbsp; -module &emsp; &emsp; &emsp; &emsp;res or ep<br />
        &nbsp; &nbsp; &nbsp; -glycan &emsp; &emsp; &emsp; &emsp;list glycan names with comma separators<br />
-       &nbsp; &nbsp; &nbsp; -freesasa &emsp; &emsp; &emsp; &emsp; path of FreeSASA executable<br />
+       &nbsp; &nbsp; &nbsp; -freesasa &emsp; &emsp; &emsp; path of FreeSASA executable<br />
        &nbsp; &nbsp; &nbsp; -probe &emsp; &emsp; &emsp; &emsp; (optional)probe radius (1.4 A by default)<br />
        &nbsp; &nbsp; &nbsp; -sur_cutoff&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; (optional)cutoff to define surface (30 A^2 by default)<br />
        &nbsp; &nbsp; &nbsp; -epitope&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;(if module is "ep")File with epitope residues<br />
