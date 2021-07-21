@@ -13,18 +13,18 @@ GLYCO (GLYcan COverage) is a program to calculate glycan coverage of glycoprotei
 **3. Run GLYCO<br />**
    - GLYCO takes the following arguments. Depending on the module and number of frames you have, the required arguments vary:<br />
     
-   | Argument      | Input                                   | requirement                  |
-   | ------------- |-----------------------------------------| :----------------------------|
-   | -pdb          | pdbname.pdb                             | mandatory when single PDB    |
-   | -in_folder    | Input folder with multiple PDBs         | mandatory when multiple PDBs |
-   | -cutoff       | cutoff to analyze glycan in Angstrom    | mandatory                    |
-   | -module       | res or ep                               | mandatory                    |
-   | -glycan       | list glycan names with comma separators | mandatory                    |
-   | -out_folder   | output folder name to save result       | mandatory  |
-   | -freesasa     | cutoff in Angstrom                      | mandatory when module "res"  |
-   | -epitope      | cutoff in Angstrom                      | mandatory when module "ep"   |
-   | -probe        | probe radius                            | optional(1.4 A by default)   |
-   | -sur_cutoff   | cutoff to define surface                | optional(30 A^2 by default)  |
+   | Argument      | Input                                      | Requirement                  |
+   | ------------- |--------------------------------------------| :----------------------------|
+   | -pdb          | pdbname.pdb                                | mandatory when single PDB    |
+   | -in_folder    | Input folder that has multiple PDBs        | mandatory when multiple PDBs |
+   | -cutoff       | cutoff to analyze glycan in Angstrom       | mandatory                    |
+   | -module       | module name (res or ep)                    | mandatory                    |
+   | -glycan       | list of glycan names with comma separators | mandatory                    |
+   | -out_folder   | output folder name to save result          | mandatory                    |
+   | -freesasa     | path of FreeSASA executable                | mandatory when module "res"  |
+   | -epitope      | file that has a list of epitope residues   | mandatory when module "ep"   |
+   | -probe        | probe radius to define surface             | optional(1.4 A by default)   |
+   | -sur_cutoff   | cutoff to define surface                   | optional(30 A^2 by default)  |
    | -num_parallel | (if multiple PDBs)number of frames to submit in parallel   | optional(1 by default) when multiple PDBs  |
    | -num_proc_in  | (if multiple PDBs)number of CPU cores to allocate          | optional(maximum number of cores by default)|
    | -average      | (if multiple PDBs from the same structure)to average glycan numbers over multiple PDBs  | optional  |
