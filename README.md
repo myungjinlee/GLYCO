@@ -25,8 +25,9 @@ GLYCO (GLYcan COverage) is a program to calculate glycan coverage of glycoprotei
    | -epitope      | file that has a list of epitope residues   | mandatory when module "ep"   |
    | -probe        | probe radius to define surface             | optional(1.4 A by default)   |
    | -sur_cutoff   | cutoff to define surface                   | optional(30 A^2 by default)  |
-   | -num_parallel | (if multiple PDBs)number of frames to submit in parallel   | optional(1 by default) when multiple PDBs   |
-   | -num_proc_in  | (if multiple PDBs)number of CPU cores to allocate          | optional(maximum number of cores by default)|
+   | -num_parallel | (if multiple PDBs)number of frames to submit in parallel   | optional(1 by default)   |
+   | -num_proc_in  | (if multiple PDBs)number of CPU cores to allocate          | optional
+   (maximum number of cores by default)|
    | -average      | (if multiple PDBs from the same structure)to average glycan numbers over multiple PDBs  | optional  |
      
    If you want to ignore silence warnings from Python, you could use ``` python3 -W glyco.py ``` and add argments after that.<br />
