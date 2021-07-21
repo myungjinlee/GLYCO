@@ -12,17 +12,13 @@ GLYCO (GLYcan COverage) is a program to calculate glycan coverage of glycoprotei
 
 **3. Run GLYCO<br />**
    - GLYCO takes the following arguments. Depending on the module and number of frames you have, the required arguments vary:<br />
- Sample code<br />
-&nbsp;&nbsp;&nbsp;&nbsp;5th position in an really ugly code  
-    5th position in a clear an readable code  
-    Again using non-breaking spaces :)
     
    &nbsp;&nbsp;&nbsp;-----------------------------------------------------------------------------------------------------<br />
        &nbsp; &nbsp; &nbsp; -pdb&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; pdbname.pdb<br />
        &nbsp; &nbsp; &nbsp; -cutoff&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; cutoff in $\mathring A$   $\text{\r \textit{g}}$ \AA Angstrom<br />
        &nbsp; &nbsp; &nbsp; -module &emsp; &emsp; &emsp; &emsp;res or ep<br />
        &nbsp; &nbsp; &nbsp; -glycan &emsp; &emsp; &emsp; &emsp;list glycan names with comma separators<br />
-       &nbsp; &nbsp; &nbsp; -freesasa&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;path of FreeSASA executable<br />
+       &nbsp; &nbsp; &nbsp; -freesasa&emsp; &emsp; &emsp; &emsp;path of FreeSASA executable<br />
        &nbsp; &nbsp; &nbsp; -probe &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; (optional)probe radius (1.4 A by default)<br />
        &nbsp; &nbsp; &nbsp; -sur_cutoff&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; (optional)cutoff to define surface (30 A^2 by default)<br />
        &nbsp; &nbsp; &nbsp; -epitope&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;(if module is "ep")File with epitope residues<br />
