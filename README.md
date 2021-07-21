@@ -13,11 +13,11 @@ GLYCO (GLYcan COverage) is a program to calculate glycan coverage of glycoprotei
 **3. Run GLYCO<br />**
    - GLYCO takes the following arguments. Depending on the module and number of frames you have, the required arguments vary:<br />
     
-    | Tables        | Are           | Cool  |
-    | ------------- |:-------------:| -----:|
-    | col 3 is      | right-aligned | $1600 |
-    | col 2 is      | centered      |   $12 |
-    | zebra stripes | are neat      |    $1 |
+   | Tables        | Are           | Cool  |
+   | ------------- |:-------------:| -----:|
+   | col 3 is      | right-aligned | $1600 |
+   | col 2 is      | centered      |   $12 |
+   | zebra stripes | are neat      |    $1 |
     
    &nbsp;&nbsp;&nbsp;-----------------------------------------------------------------------------------------------------<br />
        &nbsp; &nbsp; &nbsp; -pdb&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; pdbname.pdb<br />
