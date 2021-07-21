@@ -13,11 +13,14 @@ GLYCO (GLYcan COverage) is a program to calculate glycan coverage of glycoprotei
 **3. Run GLYCO<br />**
    - GLYCO takes the following arguments. Depending on the module and number of frames you have, the required arguments vary:<br />
     
-   | Argument      | command       | requirement|
-   | ------------- |:-------------:| ----------:|
-   | -pdb           pdbname.pdb   | mandatory  |
-   | -cutoff        cutoff in Angstrom   | mandatory  |
-   | -module       | are neat      | mandatory  |
+   | Argument      | command              | requirement|
+   | ------------- |:--------------------:| ----------:|
+   | -pdb          | pdbname.pdb          | mandatory  |
+   | -cutoff       | cutoff in Angstrom   | mandatory  |
+   | -module       | are neat             | mandatory  |
+   | -glycan          | pdbname.pdb          | mandatory  |
+   | -freesasa       | cutoff in Angstrom   | mandatory  |
+   | -module       | are neat             | mandatory  |
     
    &nbsp;&nbsp;&nbsp;-----------------------------------------------------------------------------------------------------<br />
        &nbsp; &nbsp; &nbsp; -pdb&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; pdbname.pdb<br />
