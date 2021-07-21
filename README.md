@@ -15,8 +15,8 @@ GLYCO (GLYcan COverage) is a program to calculate glycan coverage of glycoprotei
     
    | Argument      | command       | requirement|
    | ------------- |:-------------:| ----------:|
-   | -pdb          | pdbname.pdb   | mandatory  |
-   | -cutoff       | centered      | mandatory  |
+   | -pdb           pdbname.pdb   | mandatory  |
+   | -cutoff        cutoff in Angstrom   | mandatory  |
    | -module       | are neat      | mandatory  |
     
    &nbsp;&nbsp;&nbsp;-----------------------------------------------------------------------------------------------------<br />
