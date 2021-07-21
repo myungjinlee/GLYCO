@@ -28,23 +28,6 @@ GLYCO (GLYcan COverage) is a program to calculate glycan coverage of glycoprotei
    | -num_parallel | (if multiple PDBs)number of frames to submit in parallel   | optional(1 by default) when multiple PDBs  |
    | -num_proc_in  | (if multiple PDBs)number of CPU cores to allocate          | optional(maximum number of cores by default)|
    | -average      | (if multiple PDBs from the same structure)to average glycan numbers over multiple PDBs  | optional  |
-    
-   &nbsp;&nbsp;&nbsp;-----------------------------------------------------------------------------------------------------<br />
-       &nbsp; &nbsp; &nbsp; -pdb&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; pdbname.pdb<br />
-       &nbsp; &nbsp; &nbsp; -cutoff&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; cutoff in $\mathring A$   Angstrom<br />
-       &nbsp; &nbsp; &nbsp; -module &emsp; &emsp; &emsp; &emsp; res or ep<br />
-       &nbsp; &nbsp; &nbsp; -glycan &emsp; &emsp; &emsp; &emsp;&nbsp; list glycan names with comma separators<br />
-       &nbsp; &nbsp; &nbsp; -freesasa &emsp; &emsp; &emsp; path of FreeSASA executable<br />
-       &nbsp; &nbsp; &nbsp; -probe &emsp; &emsp; &emsp; &emsp; (optional)probe radius (1.4 A by default)<br />
-       &nbsp; &nbsp; &nbsp; -sur_cutoff&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; (optional)cutoff to define surface (30 A^2 by default)<br />
-       &nbsp; &nbsp; &nbsp; -epitope&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;(if module is "ep")File with epitope residues<br />
-       &nbsp; &nbsp; &nbsp; -in_folder &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(if multiple PDBs)Input folder with multiple PDBs<br />
-       &nbsp; &nbsp; &nbsp; -out_folder&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Output folder to save results<br />
-       &nbsp; &nbsp; &nbsp; -num_parallel &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; (if multiple PDBs)number of frames to submit in parallel (1 by default)<br />
-       &nbsp; &nbsp; &nbsp; -num_proc_in&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; (optional)number of CPU cores to allocate (maximum number of cores by default)<br />
-       &nbsp; &nbsp; &nbsp; -average &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; (optional)(if multiple PDBs from the same structure)to average glycan numbers over multiple PDBs<br />
-   &nbsp;&nbsp;&nbsp;-----------------------------------------------------------------------------------------------------<br />
- 
      
    If you want to ignore silence warnings from Python, you could use ``` python3 -W glyco.py ``` and add argments after that.<br />
    
