@@ -1,6 +1,14 @@
 #!/usr/bin/env python
 # coding: utf-8
 
+#-------------------------------------------------------------#
+# GLYCO 
+#
+# 07/27/2021
+# Developed by Myungjin Lee, Ph.D, Mateo Reveiz
+# Please contact myungjin.lee@nih.gov for any question or bugs.
+#-------------------------------------------------------------#
+
 import sys
 import os
 from pathlib import Path
@@ -11,24 +19,17 @@ import argparse
 import datetime
 from collections import defaultdict
 from collections import OrderedDict
-import numpy as np
 import glob  
 import fileinput
-import warnings
-from Bio import PDB, SeqIO, SeqUtils
-from Bio.PDB import PDBIO
 
 # For multiprocessing
 import multiprocessing 
 from multiprocessing.pool import Pool
 from concurrent.futures import ProcessPoolExecutor as Pool_out
 
-# For progress bars
-from tqdm import tqdm
-
 
 # ---------------------------------------------------------------------------------#
-#                                 Helper methods                                  #
+#                                 Helper methods                                   #
 # ---------------------------------------------------------------------------------#
 
 # Generate a surface residue dictionary 
@@ -49,7 +50,6 @@ def outermost(inpdb, infloat, freesasa_path, inprobe, out_folder):
             chain = line[8].strip()
             resnum = line[9:14].strip()
             surf_area = line[14:22].strip()
-            # RES GLU A 185A  119.57
             if atype == 'RES' and resname in ('ALA', 'ARG', 'ASN', 'ASP', 'CYS', 'GLN', 'GLU',
                                               'GLY', 'HSD', 'HIS', 'HIE', 'HID', 'ILE', 'LEU',
                                               'LYS', 'MET', 'PHE', 'PRO', 'SER', 'THR', 'TRP',
@@ -58,11 +58,10 @@ def outermost(inpdb, infloat, freesasa_path, inprobe, out_folder):
                 surf_dict[surf_key] = float(surf_area)
                 if float(surf_area) >= infloat:
                     keys.append([resname, chain, resnum])
-                    # 'RES     ALA      A       1    108.06'
     keys = numpy.array(keys)
     with open(inpdb, "r") as f:
         lines = f.readlines()
-        for line in tqdm(lines, desc="Excluding buried residues of the input protein"):
+        for line in open(inpdb):
             if line[17:20] in ('ALA', 'ARG', 'ASN', 'ASP', 'CYS', 'GLN', 'GLU', 'GLY', 'HSD',
                                'HIS', 'HIE', 'HID', 'ILE', 'LEU', 'LYS', 'MET', 'PHE', 'PRO',
                                'SER', 'THR', 'TRP', 'TYR', 'VAL'):
@@ -71,16 +70,16 @@ def outermost(inpdb, infloat, freesasa_path, inprobe, out_folder):
                 resname = line[17:20].strip()
                 chain = line[21:22].strip()
                 resid = line[22:28].strip()
-
-                for k in keys:
-                # ATOM  14823  N   ARG A1000      -8.710  -0.790   7.690
-                   if k[0] == resname and k[1] == chain and k[2] == resid:
+            
+                for k in keys:                    
+                    if k[0] == resname and k[1] == chain and k[2] == resid: 
                         key = (atomnum, atomtype, resname, chain, resid)
                         x = float(line[30:38].strip())
                         y = float(line[38:46].strip())
                         z = float(line[46:54].strip())
                         if atomtype.find('H') == -1:
                             outdict[key] = [x, y, z]
+    
     return outdict, surf_dict
 
 
@@ -105,7 +104,7 @@ def input_to_dict(infile, indict):
 def gen_pro_dict(inpdb):
     print('PROGRESS: Generating a protein dictionary')
     outdict1 = {}
-    outdict2 = defaultdict(list)
+    outdict2 = defaultdict(list) 
     for line in open(inpdb):
         if line[0:4] == 'ATOM':
             if line[17:20] in ('ALA', 'ARG', 'ASN', 'ASP', 'CYS', 'GLN', 'GLU', 'GLY', 'HSD',
@@ -128,31 +127,27 @@ def gen_pro_dict(inpdb):
                     outdict2[x].append([y, z, key])  # to check crossing
     return outdict1, outdict2
 
+
 # Generate a glycan dictionary that has glycan keys and values as glycan coordinate
-def gen_gly_dict(struct, input_glycan):
-    print('PROGRESS: Generating a glycan dictionary')
+def gen_gly_dict(inpdb, input_glycan):
+    print('PROGRESS: Generating a glycan dictionary') 
     outdict = {}
-    # Loop thorugh pdb and update bfactor values
-    for model in struct:
-        # Loop through chains
-        for chain in model:
-            chain_name = chain.get_id()
-            # Loop through residues
-            for residue in chain:
-                # Get residues position
-                _, residue_num, residue_num_letter = residue.id
-                residue_num = str(residue_num) + residue_num_letter.strip()
-                if residue.resname in input_glycan:
-                    # Loop through atoms
-                    for atom in residue:
-                        atom_id =(residue.resname, chain_name, residue_num)
-                        atom_name = atom.get_id()
-                        atom_num = atom.get_serial_number()
-                        atom_coord = atom.get_coord()
-                        key = (str(atom_num), atom_name, residue.resname, chain_name, residue_num)
-                        if atom_name.find('H') == -1:
-                            outdict[key] = [atom_coord[0], atom_coord[1], atom_coord[2]]
+    for line in open(inpdb):
+        if line[0:4] == 'ATOM' or line[0:4] == 'HETA':
+            if line[17:21].strip() in input_glycan:
+                resname = line[17:21].strip()
+                chain = line[21].strip()
+                resid = line[22:28].strip()
+                atomnum = line[6:11].strip()
+                atomtype = line[12:16].strip()
+                key = (atomnum, atomtype, resname, chain, resid)
+                x = float(line[30:38].strip())
+                y = float(line[38:46].strip())
+                z = float(line[46:54].strip())
+                if atomtype.find('H') == -1:
+                    outdict[key] = [x, y, z]
     return outdict
+
 
 # Extract epitope residues from a dictionary and generate an epitope dictionary
 def ep_to_dict(inarr, indict):
@@ -205,32 +200,6 @@ def merge_dict_lists(added_dict=None, inplace_dict=None):
         else: 
             inplace_dict[k] = v 
 
-def get_struct(file_name):
-    parser = PDB.PDBParser()
-    struct = parser.get_structure('pdb_1', file_name)
-    return struct            
-            
-
-def apply_bfactor(bfactor_mapper, struct):
-    # Loop thorugh pdb and update bfactor values
-    for model in struct:
-        # Loop through chains
-        for chain in model:
-            chain_name = chain.get_id()
-            # Loop through residues
-            for residue in chain:
-                # Get residues position
-                _, residue_num, residue_num_letter = residue.id
-                residue_num = str(residue_num) + residue_num_letter.strip()
-                # Loop through atoms
-                for atom in residue:
-                    atom_id =(residue.resname, chain_name, residue_num)
-                    if atom_id in bfactor_mapper:
-                        atom.set_bfactor(len(bfactor_mapper[atom_id]))
-                    else:
-                        atom.set_bfactor(0)
-    return struct
-
 # ---------------------------------------------------------------------------------#
 #                                  Main methods                                    #
 # ---------------------------------------------------------------------------------#
@@ -250,35 +219,35 @@ def process_cmd_args():
     parser = argparse.ArgumentParser(usage= '\n'+ '\n' +
              'Single PDB------------------------------------------------------------------------------------------------------------------------------------------' + '\n'
              'module1: To calculate number of glyan atoms of residues on the protein surface' + '\n'
-             'python3 glyco.py -pdb ../input/origin_frame_100_renumber-HXB2.pdb -cutoff 26 -sur_cutoff 30 -module res -glycan BMA,AMA,BGL -freesasa /data/leem25/software/freesasa/bin/freesasa -num_proc_in 22 -num_parallel 1 -out_folder results' + '\n' + '\n'
+             'python3 glyco.py -pdb frame.pdb -cutoff 26 -sur_cutoff 30 -probe 1.5 -module res -glycan BMA,AMA,BGL -freesasa /home/bin/freesasa -num_proc_in 22 -out_folder results' + '\n' + '\n'
              'module2: To calculate glyan coverage of epitope residues' + '\n'
-             'python3 glyco.py -pdb ../input/origin_frame_100_renumber-HXB2.pdb -cutoff 26 -sur_cutoff 30 -module ep -glycan BMA,AMA,BGL -epitope epitope_list.txt -num_proc_in 22 -num_parallel 1 -out_folder results' + '\n' 
+             'python3 glyco.py -pdb frame.pdb -cutoff 26 -module ep -glycan BMA,AMA,BGL -epitope epitope_list.txt -num_proc_in 22 -num_parallel 1 -out_folder results' + '\n' 
              '----------------------------------------------------------------------------------------------------------------------------------------------------' + '\n' + '\n'
              'Multiple PDBs---------------------------------------------------------------------------------------------------------------------------------------' + '\n'
              'module1: To calculate number of glyan atoms of residues on the protein surface' + '\n'
-             'python3 glyco.py -in_folder input -cutoff 26 -sur_cutoff 30 -module res -glycan BMA,AMA,BGL -freesasa /data/leem25/software/freesasa/bin/freesasa -num_proc_in 22 -num_parallel 2 -out_folder results -average'  + '\n'  + '\n'
+             'python3 glyco.py -in_folder input -cutoff 26 -sur_cutoff 30 -probe 1.5 -module res -glycan BMA,AMA,BGL -freesasa /home/bin/freesasa -num_proc_in 22 -num_parallel 2 -out_folder results -average'  + '\n'  + '\n'
              'module2: To calculate glyan coverage of epitope residues' + '\n'
-             'python3 glyco.py -in_folder input -cutoff 26 -sur_cutoff 30 -module ep -glycan BMA,AMA,BGL -epitope epitope_list.txt  -num_proc_in 22 -num_parallel 2 -out_folder results -average' + '\n'
+             'python3 glyco.py -in_folder input -cutoff 26  -module ep -glycan BMA,AMA,BGL -epitope epitope.txt  -num_proc_in 22 -num_parallel 2 -out_folder results -average' + '\n'
              '----------------------------------------------------------------------------------------------------------------------------------------------------' + '\n' + '\n')
     parser.add_argument('-pdb', type=str, help='Enter your name of pdb. ex) input.pdb')
-    parser.add_argument('-cutoff', type=float, help='Enter your distance cutoff in Angstrom. ex) 30', required=True)
-    parser.add_argument('-glycan', type=str, help='Enter your name of glycans with space for separators. ex) BMA AMA BGLN', required=True)
+    parser.add_argument('-cutoff', type=float, help='Enter your distance cutoff for glycans in Angstrom. ex) 30', required=True)
+    parser.add_argument('-glycan', type=str, help='Enter your name of glycans with space for separators. ex) BMA,AMA,BGLN', required=True)
     parser.add_argument('-module', type=str, help='Enter your module, either res or ep. ex) res', required=True)
     parser.add_argument('-epitope', type=str, help='Enter your epitope list. ex) epitope_list.txt')
     parser.add_argument('-freesasa', type=str, help='Enter your path of Freesasa, ex) /home/lee/freesasa')
-    parser.add_argument('-num_proc_in', type=int, help='Enter the number of workers to use per frame', default=multiprocessing.cpu_count())
-    parser.add_argument('-num_parallel', type=int, help='Enter the number of frames to do in parallel', default=1)
-    parser.add_argument('-probe', type=float, help='Enter probe radius of FreeSASA', default=1.4)
-    parser.add_argument('-sur_cutoff', type=float, help='Enter probe radius of FreeSASA', default=30)
-    parser.add_argument('-average', action='store_true', help='Add if using input folder with multiple pdbs of the same protein at different frames.')
-    parser.add_argument('-in_folder', type=str, help='Input folder with pdb files.')
-    parser.add_argument('-out_folder', type=str, help='Output folder where results will be saved.', required=True)
+    parser.add_argument('-num_proc_in', type=int, help='Enter the number of workers to use per frame. ex) 9', default=multiprocessing.cpu_count())
+    parser.add_argument('-num_parallel', type=int, help='Enter the number of frames to do in parallel. ex) 5', default=1)
+    parser.add_argument('-probe', type=float, help='Enter probe radius of FreeSASA in Angstrom. ex) 1.5', default=1.4)
+    parser.add_argument('-sur_cutoff', type=float, help='Enter surface area cutoff of FreeSASA in Angstrom^2. ex) 40', default=30)
+    parser.add_argument('-average', action='store_true', help='Add if using input folder with multiple pdbs of the same protein.')
+    parser.add_argument('-in_folder', type=str, help='Input folder where input pdb files are located. ex) input')
+    parser.add_argument('-out_folder', type=str, help='Output folder where results will be saved. ex) output', required=True)
 
     args = parser.parse_args()
 
     if args.module == 'res' and args.freesasa == None:
         print('Please add freesasa path')
-        syse.exit(1) 
+        sys.exit(1) 
     elif args.module == 'ep' and args.epitope == None:
         print('Please add epitope list')
         sys.exit(1)
@@ -302,7 +271,7 @@ def process_cmd_args():
             print("Please use either -pdb OR -in_folder.")
             sys.exit(1)
         
-        
+         
     if args.average:
         if args.pdb is not None:
             print("Please do not use -pdb when -average is true. All input pdbs should be in the /input folder.")
@@ -339,11 +308,9 @@ def process_cmd_args():
 
 # Generate dictionaries with input files
 def preprocess_dicts(origin_pdb, sur_cutoff, input_glycan, input_epitope, res_or_ep, freesasa_path, inprobe, out_folder):
-   
-    struct = get_struct(origin_pdb) 
-    ori_pro_dict, pro_dict = gen_pro_dict(origin_pdb)
     
-    gly_dict = gen_gly_dict(struct, input_glycan)
+    ori_pro_dict, pro_dict = gen_pro_dict(origin_pdb)
+    gly_dict = gen_gly_dict(origin_pdb, input_glycan)
 
     res_dict = {}
     if res_or_ep == 'res':
@@ -372,9 +339,9 @@ def launch_workers(gly_dict, res_dict, pro_dict, nproc, dist_cutoff, ori_pro_dic
         glycan_out = False
 
     # Split calculations into multiple bundles
-    outter_data = np.array(outter_data, dtype=object)
+    outter_data = numpy.array(outter_data, dtype=object)
     bundle_num = nproc * 2
-    bundle_outter_data = np.array_split(outter_data, bundle_num, axis=0) 
+    bundle_outter_data = numpy.array_split(outter_data, bundle_num, axis=0) 
 
     # Store results 
     all_results = {}
@@ -436,7 +403,6 @@ def worker(job_id, res_dict, gly_dict, pro_dict, dist_cutoff, ori_pro_dict):
                     count += 1
                     gly_list.append(key2[0])
                 else:
-                    # print('Excluded glycan', key2, val1)
                     pass
                     
         tmp_dict[res_key].extend(gly_list)
@@ -484,15 +450,27 @@ def write_outputs(res_or_ep, count_dict, num_dict, final_dict, out_folder, prefi
                 line = str('{:22s}'.format(str(key))) + ' ' + str('{:4d}'.format(len(val))) + '\n'
                 f_obj_res.write(line)
 
-        struct = get_struct(origin_pdb)
-        struct = apply_bfactor(final_dict, struct)
-
-        io=PDBIO()
-        io.set_structure(struct) 
         print(origin_pdb)
         print(out_folder + "/{}_bfactor.pdb".format(prefix))
-        io.save(out_folder + "/{}_bfactor.pdb".format(prefix))
           
+        os.system("cp " + origin_pdb + ' ' + out_folder + "/" + prefix + '_bfactor.pdb')
+        for line in fileinput.input(out_folder + "/" + prefix + '_bfactor.pdb', inplace=1):
+            line = line.strip()
+            if line.startswith('ATOM'):
+                origin_line = line
+                key = (str(line[17:21].strip()),str(line[21:22].strip()),str(line[22:26].strip()))
+                if key in final_dict.keys():
+                    count = len(final_dict[key])
+                    val = str('{:>6.2f}'.format(count))
+                    new_line = origin_line[:60] + val + origin_line[66:]
+                    print(new_line)
+                else:
+                    val = str('{:>6.2f}'.format(0))
+                    new_line = origin_line[:60] + val + origin_line[66:]
+                    print(new_line)
+            else:
+                print(line)
+
     elif res_or_ep == 'ep':
         with open(out_folder + "/" + prefix + '_ep_glysum.txt', 'w') as f_obj_ep:        
             total_glycan_list = []
@@ -555,22 +533,25 @@ def average_frames_res(out_folder):
 
 def average_frames_ep(out_folder):
     
-    output_files = list(glob.glob(os.path.join(out_folder, "*ave_ep_gly.txt")))
+    output_files = list(glob.glob(os.path.join(out_folder, "*ep_glysum.txt")))
     glysum = 0
+    total_average = 0
     
     for output_file in output_files:
-        for line in open(input_file):
+        for line in open(output_file):
             line = line.strip()
             glysum += float(line)
-            
     total_average = glysum / len(output_files)
     
     with open(out_folder + '/ave_ep_gly.txt', 'w') as file_obj:
         file_obj.write(str("{:>9.2f}".format(total_average)) + '\n')
 
+
+
 # --------------------------------------------------------------------------------- #
 #                                      MAIN                                         #
 # --------------------------------------------------------------------------------- #
+
  
 
 def main():
@@ -620,10 +601,9 @@ def main():
 
 if __name__ == "__main__":
     start = time.time()
- 
+
     main()
 
     end = time.time()
     print('TIME SPENT: ', str(datetime.timedelta(seconds=end-start)))
 
-    
