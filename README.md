@@ -23,7 +23,7 @@ GLYCO (GLYcan COverage) is a program to calculate glycan coverage of glycoprotei
    | -out_folder      | output folder name to save result                  | mandatory                    |
    | -freesasa        | path of FreeSASA executable                        | mandatory when module "res"  |
    | -epitope         | file that has a list of epitope residues           | mandatory when module "ep"   |
-   | -probe           | probe radius to define surface                     | optional when module "ep" (1.4 A by default)   |
+   | -probe           | probe radius to define surface                     | optional when module "res" (1.4 A by default)   |
    | -sur_cutoff      | cutoff to define surface residues                  | optional when module "res" (30 A^2 by default)  |
    | -num_proc_in     | number of CPU cores                                | optional (maximum number of cores by default)|
    | -num_parallel    | (if multiple PDBs) number of frames to submit in parallel   | optional (1 by default)   |
@@ -78,7 +78,7 @@ GLYCO (GLYcan COverage) is a program to calculate glycan coverage of glycoprotei
        - Count number of glycan atoms per epitope residue
          
        ```
-       python3 glyco.py -in_folder input -cutoff 20 -module ep -glycan BMA,AMA,BGL -num_proc_in 28 -num_parallel 1 -epitope /home/leem/glyco/multiframes/epitope/epitope.txt -out_folder results -average
+       python3 glyco.py -in_folder input -cutoff 20 -module ep -glycan BMA,AMA,BGL -num_proc_in 28 -num_parallel 2 -epitope epitope.txt -out_folder results -average
        ```
        - Output<br /> 
         -- ave_ep_glycount.txt: averaged number of glycan atoms per epitope <br />  
