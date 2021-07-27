@@ -28,8 +28,7 @@ GLYCO (GLYcan COverage) is a program to calculate glycan coverage of glycoprotei
    | -num_proc_in     | number of CPU cores                                | optional (maximum number of cores by default)|
    | -num_parallel    | (if multiple PDBs) number of frames to submit in parallel   | optional (1 by default)   |
    | -average         | (if multiple PDBs from the same structure) no input | optional  |
-     
-   If you want to ignore silence warnings from Python, you could use ``` python3 -W ignore glyco.py ``` and add argments after that.<br />
+   
    
    - 3.1. A single frame (PDB)<br />
      - 3.1.1. Glycan atoms of each residue -  module: "res":<br />
