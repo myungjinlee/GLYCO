@@ -1,0 +1,1 @@
+python3 glyco.py -average -in_folder input -cutoff 26 -sur_cutoff 30 -module all -glycan BMA,AMA,BGL -freesasa /data/leem25/software/freesasa/bin/freesasa -num_proc_in 9 -num_parallel 5 -out_folder output

@@ -1,0 +1,2 @@
+python3 glyco.py -in_folder input -cutoff 26 -sur_cutoff 30 -module sub -glycan BMA,AMA,BGL -residue residuelist.txt  -out_folder output -average
+
