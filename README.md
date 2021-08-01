@@ -49,13 +49,13 @@ GLYCO (GLYcan COverage) is a program to calculate glycan coverage of glycoprotei
        ```
        python3 glyco.py -pdb 5fyl.pdb -cutoff 20 -module sub -glycan BMA,AMA,BGL -residue residuelist.txt -out_folder output
        ```
-       You can add argument ```-num_proc_in  ```as needed. <br />
-         &nbsp; &nbsp; &nbsp; *residuelist.txt should be in the following format: residue name, chain ID, residue number<br />
-           &nbsp; &nbsp; &nbsp; (epitope.txt)<br />
-           &nbsp; &nbsp; &nbsp;  ARG&nbsp; A&nbsp; 309<br />
-           &nbsp; &nbsp; &nbsp;  THR&nbsp; A&nbsp; 200<br />
-           &nbsp; &nbsp; &nbsp;   MET&nbsp; B&nbsp; 196<br />
-           &nbsp; &nbsp; &nbsp;   ASP&nbsp; C&nbsp; 305<br />
+       You can add argument ```-num_proc_in  ```as needed. <br /><br />
+         &nbsp; &nbsp; *residuelist.txt should be in the following format: residue name, chain ID, residue number<br />
+            &nbsp; &nbsp; (epitope.txt)<br />
+            &nbsp; &nbsp;  ARG&nbsp; A&nbsp; 309<br />
+            &nbsp; &nbsp;  THR&nbsp; A&nbsp; 200<br />
+            &nbsp; &nbsp;   MET&nbsp; B&nbsp; 196<br />
+            &nbsp; &nbsp;   ASP&nbsp; C&nbsp; 305<br />
        
         - Output<br /> 
         -- sub_glysum.txt: summation of number of glycan atoms of the input residues. This value excludes the overlapped, redundant glycan atoms shared among a residue list. <br /><br />
