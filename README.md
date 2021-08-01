@@ -37,7 +37,7 @@ GLYCO (GLYcan COverage) is a program to calculate glycan coverage of glycoprotei
        ```
        python3 glyco.py -pdb 5fyl.pdb -cutoff 20 -module all -glycan BMA,AMA,BGL -freesasa /home/lee/freesasa -out_folder output 
        ```
-       You can add arguments ```-probe```, ```-sur_cutoff```, ```-num_proc_in```as needed. <br />
+       You can add arguments ```-probe```, ```-sur_cutoff```, ```-num_proc_in``` as needed. <br />
        
        - Output<br /> 
        -- 5fyl_all_glycount.txt: number of glycan atoms per residue<br />
@@ -49,7 +49,7 @@ GLYCO (GLYcan COverage) is a program to calculate glycan coverage of glycoprotei
        ```
        python3 glyco.py -pdb 5fyl.pdb -cutoff 20 -module sub -glycan BMA,AMA,BGL -residue residuelist.txt -out_folder output
        ```
-       You can add argument ```-num_proc_in```as needed. <br /><br />
+       You can add argument ```-num_proc_in``` as needed. <br /><br />
          &nbsp; &nbsp; *residuelist.txt should be in the following format: residue name, chain ID, residue number<br />
             &nbsp; &nbsp; (residuelist.txt)<br />
             &nbsp; &nbsp;  ARG&nbsp; A&nbsp; 309<br />
@@ -69,7 +69,7 @@ GLYCO (GLYcan COverage) is a program to calculate glycan coverage of glycoprotei
        python3 glyco.py -in_folder input -cutoff 20 -module all -glycan BMA,AMA,BGL -freesasa /data/leem/freesasa -num_proc_in 22 -num_parallel 2 -out_folder results -average
        ```
        
-       You can add arguments ```-probe```, ```-sur_cutoff```as needed. <br />
+       You can add arguments ```-probe```, ```-sur_cutoff``` as needed. <br />
        - Output<br /> 
         -- PREFIX_INDEX_all_glycount.txt: number of glycan atoms per residue <br />
         -- PREFIX_INDEX_bfactor.pdb: PDB file with glycan atoms as b-factor (You can visualize it with PyMOL.) <br />
