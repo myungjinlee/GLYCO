@@ -2,11 +2,11 @@
 # coding: utf-8
 
 #-------------------------------------------------------------#
-# GLYCO 
+# GLYCO
 #
 # 07/27/2021
 # Developed by Myungjin Lee, Ph.D, Mateo Reveiz
-# Please contact myungjin.lee@nih.gov for any question or bugs.
+# Please contact myungjin.lee@nih.gov for any question or bug.
 #-------------------------------------------------------------#
 
 import sys
@@ -83,7 +83,7 @@ def outermost(inpdb, infloat, freesasa_path, inprobe, out_folder):
     return outdict, surf_dict
 
 
-# Convert an epitope file to a dictionary
+# Convert an subset residue file to a dictionary
 def input_to_dict(infile, indict):
     outdict = {}
     for line in open(infile):
@@ -149,7 +149,7 @@ def gen_gly_dict(inpdb, input_glycan):
     return outdict
 
 
-# Extract epitope residues from a dictionary and generate an epitope dictionary
+# Extract residues from a dictionary and generate an subset residue dictionary
 def ep_to_dict(inarr, indict):
     outdict = {}
     for ep in inarr:
@@ -218,23 +218,23 @@ def process_cmd_args():
 
     parser = argparse.ArgumentParser(usage= '\n'+ '\n' +
              'Single PDB------------------------------------------------------------------------------------------------------------------------------------------' + '\n'
-             'module1: To calculate number of glyan atoms of residues on the protein surface' + '\n'
-             'python3 glyco.py -pdb frame.pdb -cutoff 26 -sur_cutoff 30 -probe 1.5 -module res -glycan BMA,AMA,BGL -freesasa /home/bin/freesasa -num_proc_in 22 -out_folder results' + '\n' + '\n'
-             'module2: To calculate glyan coverage of epitope residues' + '\n'
-             'python3 glyco.py -pdb frame.pdb -cutoff 26 -module ep -glycan BMA,AMA,BGL -epitope epitope_list.txt -num_proc_in 22 -num_parallel 1 -out_folder results' + '\n' 
+             'module "all": Glycan coverage of the entire protein surface' + '\n'
+             'python3 glyco.py -pdb frame.pdb -cutoff 26 -sur_cutoff 30 -probe 1.5 -module all -glycan BMA,AMA,BGL -freesasa /home/bin/freesasa -num_proc_in 22 -out_folder results' + '\n' + '\n'
+             'module "sub": Glycan coverage of the subset of protein residues' + '\n'
+             'python3 glyco.py -pdb frame.pdb -cutoff 26 -module sub -glycan BMA,AMA,BGL -residue residuelist.txt -num_proc_in 22 -num_parallel 1 -out_folder results' + '\n' 
              '----------------------------------------------------------------------------------------------------------------------------------------------------' + '\n' + '\n'
              'Multiple PDBs---------------------------------------------------------------------------------------------------------------------------------------' + '\n'
-             'module1: To calculate number of glyan atoms of residues on the protein surface' + '\n'
-             'python3 glyco.py -in_folder input -cutoff 26 -sur_cutoff 30 -probe 1.5 -module res -glycan BMA,AMA,BGL -freesasa /home/bin/freesasa -num_proc_in 22 -num_parallel 2 -out_folder results -average'  + '\n'  + '\n'
-             'module2: To calculate glyan coverage of epitope residues' + '\n'
-             'python3 glyco.py -in_folder input -cutoff 26  -module ep -glycan BMA,AMA,BGL -epitope epitope.txt  -num_proc_in 22 -num_parallel 2 -out_folder results -average' + '\n'
+             'module "all": ' + '\n'
+             'python3 glyco.py -in_folder input -cutoff 26 -sur_cutoff 30 -probe 1.5 -module all -glycan BMA,AMA,BGL -freesasa /home/bin/freesasa -num_proc_in 22 -num_parallel 2 -out_folder results -average'  + '\n'  + '\n'
+             'module "sub": ' + '\n'
+             'python3 glyco.py -in_folder input -cutoff 26  -module ep -glycan BMA,AMA,BGL -residue subset_residue.txt -num_proc_in 22 -num_parallel 2 -out_folder results -average' + '\n'
              '----------------------------------------------------------------------------------------------------------------------------------------------------' + '\n' + '\n')
     parser.add_argument('-pdb', type=str, help='Enter your name of pdb. ex) input.pdb')
     parser.add_argument('-cutoff', type=float, help='Enter your distance cutoff for glycans in Angstrom. ex) 30', required=True)
     parser.add_argument('-glycan', type=str, help='Enter your name of glycans with space for separators. ex) BMA,AMA,BGLN', required=True)
-    parser.add_argument('-module', type=str, help='Enter your module, either res or ep. ex) res', required=True)
-    parser.add_argument('-epitope', type=str, help='Enter your epitope list. ex) epitope_list.txt')
-    parser.add_argument('-freesasa', type=str, help='Enter your path of Freesasa, ex) /home/lee/freesasa')
+    parser.add_argument('-module', type=str, help='Enter your module name, either all or sub. ex) all', required=True)
+    parser.add_argument('-residue', type=str, help='Enter your protein residue list. ex) residuelist.txt')
+    parser.add_argument('-freesasa', type=str, help='Enter your path of Freesasa executable, ex) /home/lee/freesasa')
     parser.add_argument('-num_proc_in', type=int, help='Enter the number of workers to use per frame. ex) 9', default=multiprocessing.cpu_count())
     parser.add_argument('-num_parallel', type=int, help='Enter the number of frames to do in parallel. ex) 5', default=1)
     parser.add_argument('-probe', type=float, help='Enter probe radius of FreeSASA in Angstrom. ex) 1.5', default=1.4)
@@ -245,11 +245,11 @@ def process_cmd_args():
 
     args = parser.parse_args()
 
-    if args.module == 'res' and args.freesasa == None:
+    if args.module == 'all' and args.freesasa == None:
         print('Please add freesasa path')
         sys.exit(1) 
-    elif args.module == 'ep' and args.epitope == None:
-        print('Please add epitope list')
+    elif args.module == 'sub' and args.residue == None:
+        print('Please add residue list')
         sys.exit(1)
         
         
@@ -293,8 +293,8 @@ def process_cmd_args():
     args_["origin_pdb"] = args.pdb
     args_["dist_cutoff"] = int(args.cutoff)
     args_["input_glycan"] = args.glycan.replace(',', ' ')
-    args_["res_or_ep"] = args.module
-    args_["input_epitope"] = args.epitope
+    args_["all_or_sub"] = args.module
+    args_["input_sub"] = args.residue
     args_["freesasa_path"] = args.freesasa 
     args_["nproc_in"] = args.num_proc_in
     args_["nproc_out"] = args.num_parallel
@@ -307,17 +307,17 @@ def process_cmd_args():
     return args
 
 # Generate dictionaries with input files
-def preprocess_dicts(origin_pdb, sur_cutoff, input_glycan, input_epitope, res_or_ep, freesasa_path, inprobe, out_folder):
+def preprocess_dicts(origin_pdb, sur_cutoff, input_glycan, input_sub, all_or_sub, freesasa_path, inprobe, out_folder):
     
     ori_pro_dict, pro_dict = gen_pro_dict(origin_pdb)
     gly_dict = gen_gly_dict(origin_pdb, input_glycan)
 
     res_dict = {}
-    if res_or_ep == 'res':
+    if all_or_sub == 'all':
         res_dict = outermost(origin_pdb, sur_cutoff, freesasa_path, inprobe, out_folder)[0]
 
-    elif res_or_ep == 'ep':
-        res_dict = input_to_dict(input_epitope, ori_pro_dict)
+    elif all_or_sub == 'sub':
+        res_dict = input_to_dict(input_sub, ori_pro_dict)
         
     return ori_pro_dict, pro_dict, gly_dict, res_dict
 
@@ -440,9 +440,9 @@ def aggregate_worker_res(all_results):
     return count_dict, num_dict, final_dict
 
 
-def write_outputs(res_or_ep, count_dict, num_dict, final_dict, out_folder, prefix, origin_pdb):
+def write_outputs(all_or_sub, count_dict, num_dict, final_dict, out_folder, prefix, origin_pdb):
     
-    if res_or_ep == 'res':
+    if all_or_sub == 'all':
         
         print(out_folder + "/" + prefix + '_res_glycount.txt')
         with open(out_folder + "/" + prefix + '_res_glycount.txt', 'w') as f_obj_res:
@@ -471,7 +471,7 @@ def write_outputs(res_or_ep, count_dict, num_dict, final_dict, out_folder, prefi
             else:
                 print(line)
 
-    elif res_or_ep == 'ep':
+    elif all_or_sub == 'sub':
         with open(out_folder + "/" + prefix + '_ep_glysum.txt', 'w') as f_obj_ep:        
             total_glycan_list = []
             for key, val in final_dict.items():
@@ -485,8 +485,8 @@ def process_request(args, origin_pdb):
     sur_cutoff = args["sur_cutoff"]
     dist_cutoff = args["dist_cutoff"]
     input_glycan = args["input_glycan"]
-    res_or_ep = args["res_or_ep"]
-    input_epitope = args["input_epitope"]
+    all_or_sub = args["all_or_sub"]
+    input_sub = args["input_sub"]
     freesasa_path = args["freesasa_path"]
     nproc_in = args["nproc_in"]
     probe = args["probe"]
@@ -494,8 +494,8 @@ def process_request(args, origin_pdb):
     out_folder = args["out_folder"]
 
     # Generate dictionaries with input files
-    ori_pro_dict, pro_dict, gly_dict, res_dict = preprocess_dicts(origin_pdb, sur_cutoff, input_glycan, input_epitope,
-                                                                  res_or_ep, freesasa_path, probe, out_folder)
+    ori_pro_dict, pro_dict, gly_dict, res_dict = preprocess_dicts(origin_pdb, sur_cutoff, input_glycan, input_sub,
+                                                                  all_or_sub, freesasa_path, probe, out_folder)
     # Launch workers
     all_results = launch_workers(gly_dict, res_dict, pro_dict, nproc_in, dist_cutoff, ori_pro_dict)
 
@@ -504,7 +504,7 @@ def process_request(args, origin_pdb):
 
     # Write results
     prefix = Path(origin_pdb).name.replace(".pdb", "")
-    write_outputs(res_or_ep, count_dict, num_dict, final_dict, out_folder, prefix, origin_pdb)
+    write_outputs(all_or_sub, count_dict, num_dict, final_dict, out_folder, prefix, origin_pdb)
    
    
 def average_frames_res(out_folder):
@@ -590,9 +590,9 @@ def main():
         if args["average"]:
             print("Averaging frames...")
             
-            if args["res_or_ep"] == "res":
+            if args["all_or_sub"] == "all":
                 average_frames_res(out_folder)
-            elif args["res_or_ep"] == "ep":
+            elif args["all_or_sub"] == "sub":
                 average_frames_ep(out_folder)
             else:
                 print("Unknown module!")
