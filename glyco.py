@@ -444,8 +444,8 @@ def write_outputs(all_or_sub, count_dict, num_dict, final_dict, out_folder, pref
     
     if all_or_sub == 'all':
         
-        print(out_folder + "/" + prefix + '_res_glycount.txt')
-        with open(out_folder + "/" + prefix + '_res_glycount.txt', 'w') as f_obj_res:
+        print(out_folder + "/" + prefix + '_all_glycount.txt')
+        with open(out_folder + "/" + prefix + '_all_glycount.txt', 'w') as f_obj_res:
             for key, val in final_dict.items():
                 line = str('{:22s}'.format(str(key))) + ' ' + str('{:4d}'.format(len(val))) + '\n'
                 f_obj_res.write(line)
@@ -472,7 +472,7 @@ def write_outputs(all_or_sub, count_dict, num_dict, final_dict, out_folder, pref
                 print(line)
 
     elif all_or_sub == 'sub':
-        with open(out_folder + "/" + prefix + '_ep_glysum.txt', 'w') as f_obj_ep:        
+        with open(out_folder + "/" + prefix + '_sub_glysum.txt', 'w') as f_obj_ep:        
             total_glycan_list = []
             for key, val in final_dict.items():
                 total_glycan_list.extend(val)
@@ -510,7 +510,7 @@ def process_request(args, origin_pdb):
 def average_frames_res(out_folder):
     
     total_dict = {}
-    output_files = list(glob.glob(os.path.join(out_folder, "*res_glycount.txt")))
+    output_files = list(glob.glob(os.path.join(out_folder, "*all_glycount.txt")))
     
     for output_file in output_files:
         for line in open(output_file):
@@ -525,7 +525,7 @@ def average_frames_res(out_folder):
                 total_dict[key]=[]
             total_dict[key].append(float(count.strip()))
     
-    with open(out_folder + '/ave_res_glycount.txt','w') as file_obj:
+    with open(out_folder + '/ave_all_glycount.txt','w') as file_obj:
         for key in sorted(total_dict, key=lambda x: (x[1])):
             if len(total_dict[key]) > 0:
                 ave_count = sum(total_dict[key])/len(total_dict[key])
@@ -533,7 +533,7 @@ def average_frames_res(out_folder):
 
 def average_frames_ep(out_folder):
     
-    output_files = list(glob.glob(os.path.join(out_folder, "*ep_glysum.txt")))
+    output_files = list(glob.glob(os.path.join(out_folder, "*sub_glysum.txt")))
     glysum = 0
     total_average = 0
     
@@ -543,7 +543,7 @@ def average_frames_ep(out_folder):
             glysum += float(line)
     total_average = glysum / len(output_files)
     
-    with open(out_folder + '/ave_ep_gly.txt', 'w') as file_obj:
+    with open(out_folder + '/ave_sub_gly.txt', 'w') as file_obj:
         file_obj.write(str("{:>9.2f}".format(total_average)) + '\n')
 
 
