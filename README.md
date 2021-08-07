@@ -17,17 +17,17 @@ GLYCO (GLYcan COverage) is a program to calculate glycan coverage of glycoprotei
    | ---------------- |------------------------------------------------------------| :----------------------------|
    | -pdb             | pdbname.pdb                                                | mandatory when single PDB    |
    | -in_folder       | Input folder that has multiple PDBs                        | mandatory when multiple PDBs |
-   | -cutoff          | cutoff to analyze glycan in Angstrom                       | mandatory                    |
-   | -module          | module name (all or sub)                                   | mandatory                    |
-   | -glycan          | glycan names with comma separators (Do not add space)      | mandatory                    |
-   | -out_folder      | output folder name to save result                          | mandatory                    |
-   | -freesasa        | path of FreeSASA executable                                | mandatory when module "all"  |
-   | -residue         | file that has a list of user selected residues             | mandatory when module "sub"  |
-   | -probe           | (if module all)probe radius to define surface              | optional (1.4 A by default)  |
-   | -sur_cutoff      | (if module all)cutoff to define surface residues           | optional (30 A^2 by default) |
-   | -num_proc_in     | number of CPU cores                                        | optional (max. # of cores by default)|
-   | -num_parallel    | (if multiple PDBs) number of frames to submit in parallel  | optional (1 by default)      |
-   | -average         | (if multiple PDBs from the same structure) no input        | optional                     |
+   | -cutoff          | Cutoff to analyze glycan in Angstrom                       | mandatory                    |
+   | -module          | Module name (all or sub)                                   | mandatory                    |
+   | -glycan          | Glycan names with comma separators (Do not add space)      | mandatory                    |
+   | -out_folder      | Output folder name to save result                          | mandatory                    |
+   | -freesasa        | Path of FreeSASA executable                                | mandatory when module "all"  |
+   | -residue         | File that has a list of user selected residues             | mandatory when module "sub"  |
+   | -probe           | (if module all) Probe radius to define surface             | optional (1.4 A by default)  |
+   | -sur_cutoff      | (if module all) Cutoff to define surface residues          | optional (30 A^2 by default) |
+   | -num_proc_in     | Number of CPU cores                                        | optional (max. # of cores by default)|
+   | -num_parallel    | (if multiple PDBs) Number of frames to submit in parallel  | optional (1 by default)      |
+   | -average         | (if multiple PDBs from the same structure) No input        | optional                     |
    
    
    - 3.1. A single frame (PDB)<br />
