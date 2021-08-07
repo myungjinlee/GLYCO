@@ -19,7 +19,7 @@ GLYCO (GLYcan COverage) is a program to calculate glycan coverage of glycoprotei
    | -in_folder       | Input folder that has multiple PDBs                        | mandatory when multiple PDBs |
    | -cutoff          | cutoff to analyze glycan in Angstrom                       | mandatory                    |
    | -module          | module name (all or sub)                                   | mandatory                    |
-   | -glycan          | list of glycan names with comma separators                 | mandatory                    |
+   | -glycan          | glycan names with comma separators (Do not add space)      | mandatory                    |
    | -out_folder      | output folder name to save result                          | mandatory                    |
    | -freesasa        | path of FreeSASA executable                                | mandatory when module "all"  |
    | -residue         | file that has a list of user selected residues             | mandatory when module "sub"  |
