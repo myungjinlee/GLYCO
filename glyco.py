@@ -134,7 +134,7 @@ def gen_gly_dict(inpdb, input_glycan):
     outdict = {}
     for line in open(inpdb):
         if line[0:4] == 'ATOM' or line[0:4] == 'HETA':
-            if line[17:21].strip() in input_glycan:
+            if line[17:21].strip() in input_glycan.split():
                 resname = line[17:21].strip()
                 chain = line[21].strip()
                 resid = line[22:28].strip()
