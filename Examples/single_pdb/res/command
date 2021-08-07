@@ -1,1 +1,0 @@
-python3 glyco.py -pdb frame_1.pdb -glycan BGL,BMA,AMA -cutoff 26 -sur_cutoff 30 -module res -freesasa  /data/leem25/software/freesasa/bin/freesasa -out_folder output -num_proc_in 48
