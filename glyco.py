@@ -90,10 +90,11 @@ def input_to_dict(infile, indict):
         line = line.split()
         if len(line) == 3:
             # LYS A  121
+            resn = line[0]
             chain = line[1]
             resid = line[2]
             for key, val in indict.items():
-                if chain == key[3] and resid == key[4]:
+                if resn == key[2] and chain == key[3] and resid == key[4]:
                     outdict[key] = val
     return outdict
 
