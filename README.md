@@ -24,7 +24,7 @@ GLYCO (GLYcan COverage) is a program to calculate glycan coverage of glycoprotei
    | -freesasa        | Path of FreeSASA executable                                | mandatory when module "all"  |
    | -residue         | File that has a list of user selected residues             | mandatory when module "sub"  |
    | -probe           | (if module all) Probe radius to define surface             | optional (1.4 &#197; by default)  |
-   | -sur_cutoff      | (if module all) Cutoff to define surface residues          | optional (30 A^2 by default) |
+   | -sur_cutoff      | (if module all) Cutoff to define surface residues          | optional (30 &#197;&#94; by default) |
    | -num_proc_in     | Number of CPU cores                                        | optional (max. # of cores by default)|
    | -num_parallel    | (if multiple PDBs) Number of frames to submit in parallel  | optional (1 by default)      |
    | -average         | (if multiple PDBs from the same structure) No input        | optional                     |
