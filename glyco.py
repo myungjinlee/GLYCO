@@ -149,25 +149,6 @@ def gen_gly_dict(inpdb, input_glycan):
                     outdict[key] = [x, y, z]
     return outdict
 
-
-# Extract residues from a dictionary and generate an subset residue dictionary
-def ep_to_dict(inarr, indict):
-    outdict = {}
-    for ep in inarr:
-        for key, val in indict.items():
-            if ep[0] == key[2] and ep[1] == key[4]:
-                outdict[key] = val
-    return outdict
-
-
-# Calculate distances between two coordinates
-def cal_dist(inlist1, inlist2):
-    inarr1 = numpy.array(inlist1)
-    inarr2 = numpy.array(inlist2)
-    outfloat = numpy.linalg.norm(inarr1-inarr2)
-    return outfloat
-
-
 def check_protein(inar_diff, inarr1, dist, intuple, pro_dict, ori_pro_dict):
 
     leng = 1 / dist
