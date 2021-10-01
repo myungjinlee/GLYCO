@@ -4,7 +4,7 @@
 #-------------------------------------------------------------#
 # GLYCO
 #
-# 07/27/2021
+# 07/27/2021 and updated 10/01/2021
 # Developed by Myungjin Lee, Ph.D, Mateo Reveiz
 # Please contact myungjin.lee@nih.gov for any question or bug.
 #-------------------------------------------------------------#
