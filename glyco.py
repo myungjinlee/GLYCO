@@ -17,8 +17,6 @@ import time
 import numpy
 import argparse
 import datetime
-from collections import defaultdict
-from collections import OrderedDict
 import glob  
 import fileinput
 
