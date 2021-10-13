@@ -35,19 +35,25 @@ GLYCO (GLYcan COverage) is a program to calculate glycan coverage of glycoprotei
      
        - Count number of glycan atoms per all surface residues of the protein<br />
        ```
-       python3 glyco.py -pdb 5fyl.pdb -cutoff 20 -module all -glycan BMA,AMA,BGL -freesasa /home/lee/freesasa -out_folder output 
+       python3 glyco.py -pdb frame_1.pdb -cutoff 20 -module all -glycan BMA,AMA,BGL -freesasa /home/lee/freesasa -out_folder output 
        ```
        You can add arguments ```-probe```, ```-sur_cutoff```, ```-num_proc_in``` as needed. <br />
        
        - Output<br /> 
-       -- 5fyl_all_glycount.txt: number of glycan atoms per residue<br />
-       -- 5fyl_bfactor.pdb: PDB file with glycan atoms as b-factor (You can visualize it with PyMOL.) <br />
+       -- frame_1_all_glycount.txt: number of glycan atoms per residue<br />
+       Res-name  Chain  Res-num    num_glycan
+ ('ALA’,          ‘A’,           '31')                   208
+<img width="134" alt="image" src="https://user-images.githubusercontent.com/32939217/137198566-abc70db0-0409-4ee6-ae3c-888aa4dff155.png">
+
+       -- frame_1_all_bfactor.pdb: PDB file with glycan atoms as b-factor (You can visualize it with PyMOL.) <br />
+       -- frame_1_all_glysum.txt:
+       -- frame_1_all_outer.rsa:
        
      - 3.1.2. Glycan coverage of user selected residues - module: "sub":<br />
        
        - Calculate number of glycan atoms of selected residues<br />
        ```
-       python3 glyco.py -pdb 5fyl.pdb -cutoff 20 -module sub -glycan BMA,AMA,BGL -residue residuelist.txt -out_folder output
+       python3 glyco.py -pdb frame_1.pdb -cutoff 20 -module sub -glycan BMA,AMA,BGL -residue residuelist.txt -out_folder output
        ```
        You can add argument ```-num_proc_in``` as needed. <br /><br />
          &nbsp; &nbsp; *residuelist.txt should be in the following format: residue name, chain ID, residue number<br />
