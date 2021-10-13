@@ -40,7 +40,7 @@ GLYCO (GLYcan COverage) is a program to calculate glycan coverage of glycoprotei
        You can add arguments ```-probe```, ```-sur_cutoff```, ```-num_proc_in``` as needed. <br />
        
        - Output<br /> 
-       -- frame_1_all_glycount.txt: number of glycan atoms per residue<br />
+       -- frame_1_all_glycount.txt: number of glycan atoms per residue:<br />
          
    | Residue name      | Chain                                      | Residue number             | number of glycans |
    | ------------------|--------------------------------------------|----------------------------|:------------------|
