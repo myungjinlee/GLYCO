@@ -42,9 +42,9 @@ GLYCO (GLYcan COverage) is a program to calculate glycan coverage of glycoprotei
        - Output<br /> 
        -- frame_1_all_glycount.txt: number of glycan atoms per residue<br />
          
-   | Residue name      | Chain                                    | Residue number                | number of glycans |
-   | ---------------- |--------------------------------------------| :----------------------------|
-   | ('ALA’,          ‘A’,           '31')                   208           |
+   | Residue name      | Chain                                      | Residue number             | number of glycans |
+   | ------------------|--------------------------------------------|----------------------------|:------------------|
+   | ('ALA’,          ‘A’,           '31')                   208                                                     |
 
        -- frame_1_all_bfactor.pdb: PDB file with glycan atoms as b-factor (You can visualize it with PyMOL.) <br />
        -- frame_1_all_glysum.txt:
