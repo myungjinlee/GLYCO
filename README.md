@@ -42,11 +42,11 @@ GLYCO (GLYcan COverage) is a program to calculate glycan coverage of glycoprotei
        - Output<br /> 
          -- frame_1_all_glycount.txt: number of glycan atoms per residue<br />
           <img src="https://github.com/myungjinlee/GLYCO/blob/main/images/F1.png" width="400" height="70"> <br />
-       -- frame_1_all_bfactor.pdb: number of glycans from “frame_1_all_glycount.txt” are embedded in the PDB as b-factors<br />
+         -- frame_1_all_bfactor.pdb: number of glycans from “frame_1_all_glycount.txt” are embedded in the PDB as b-factors<br />
                                    (You can visualize it with PyMOL.) <br />
                                    
-       -- frame_1_all_glysum.txt: summation of number of glycans in the PDB <br />
-       -- frame_1_all_outer.rsa: the output of running Freesasa <br />
+         -- frame_1_all_glysum.txt: summation of number of glycans in the PDB <br />
+         -- frame_1_all_outer.rsa: output of running Freesasa <br />
         GLYCO utilizes the 5th column (e.g., All-atoms, ABS) to evaluate if the residue is a surface residue or not <br />
       
      - 3.1.2. Glycan coverage of user selected residues - module: "sub":<br />
