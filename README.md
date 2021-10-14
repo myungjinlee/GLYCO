@@ -43,11 +43,13 @@ GLYCO (GLYcan COverage) is a program to calculate glycan coverage of glycoprotei
          - frame_1_all_glycount.txt: number of glycan atoms per residue<br />
           <img src="https://github.com/myungjinlee/GLYCO/blob/main/images/F1.png" width="400" height="70"> <br />
          - frame_1_all_bfactor.pdb: number of glycans from “frame_1_all_glycount.txt” are embedded in the PDB as b-factors (You can visualize it with PyMOL.) <br />
-                                   
+          <img src="https://github.com/myungjinlee/GLYCO/blob/main/images/F2.png" width="800" height="70">                         
          - frame_1_all_glysum.txt: summation of number of glycans in the PDB <br />
+          <img src="https://github.com/myungjinlee/GLYCO/blob/main/images/F3.png" width="400" height="70">
          - frame_1_all_outer.rsa: output of running Freesasa <br />
         GLYCO utilizes the 5th column (e.g., All-atoms, ABS) to evaluate if the residue is a surface residue or not <br />
-      
+          <img src="https://github.com/myungjinlee/GLYCO/blob/main/images/F4.png" width="400" height="70">
+          
      - 3.1.2. Glycan coverage of user selected residues - module: "sub":<br />
        
        - Calculate number of glycan atoms of selected residues<br />
@@ -63,8 +65,8 @@ GLYCO (GLYcan COverage) is a program to calculate glycan coverage of glycoprotei
             &nbsp; &nbsp;   ASP&nbsp; C&nbsp; 305<br />
        
         - Output<br /> 
-        -- sub_glysum.txt: summation of number of glycan atoms of the input residues. This value excludes the overlapped, redundant glycan atoms shared among a residue list. <br /><br />
- 
+          - frame_1_sub_glysum.txt: summation of number of glycan atoms of the input residue list. This value excludes the overlapped, redundant glycan atoms shared among a residue list. <br /><br />
+          <img src="https://github.com/myungjinlee/GLYCO/blob/main/images/F5.png" width="400" height="70">
    - 3.2. Multiframes: If you have multiple frames of pdb files, you can submit multiple jobs in parallel.<br />
      - 3.1.1. Glycan coverage of overall protein surface residue - module: "all":<br />
        - Count number of glycan atoms per all surface residues of the proteinbr />
@@ -76,10 +78,12 @@ GLYCO (GLYcan COverage) is a program to calculate glycan coverage of glycoprotei
        
        You can add arguments ```-probe```, ```-sur_cutoff``` as needed. <br />
        - Output<br /> 
-        -- PREFIX_INDEX_all_glycount.txt: number of glycan atoms per residue <br />
-        -- PREFIX_INDEX_bfactor.pdb: PDB file with glycan atoms as b-factor (You can visualize it with PyMOL.) <br />
-        -- ave_all_glycount.txt: averaged number of glycan atoms per residue <br /> 
-     
+         - frame_1..5_all_glycount.txt: number of glycan atoms per residue <br />
+         - frame_1..5_bfactor.pdb: PDB file with glycan atoms as b-factor (You can visualize it with PyMOL.) <br />
+         - ave_all_glycount.txt: averaged number of glycan atoms per surface residue over number of PDBs <br /> 
+         <img src="https://github.com/myungjinlee/GLYCO/blob/main/images/F6.png" width="400" height="70">
+         - ave_all_glysum.txt: averaged summation of number of glycans for all surface residues over number of PDBs <br /> 
+         <img src="https://github.com/myungjinlee/GLYCO/blob/main/images/F7.png" width="400" height="70">
      - 3.1.2. Glycan coverage of user selected residues - module: "sub":<br />
        - Count number of glycan atoms per input residue
          
@@ -87,7 +91,7 @@ GLYCO (GLYcan COverage) is a program to calculate glycan coverage of glycoprotei
        python3 glyco.py -in_folder input -cutoff 20 -module sub -glycan BMA,AMA,BGL -num_proc_in 28 -num_parallel 2 -residue residuelist.txt -out_folder results -average
        ```
        - Output<br /> 
-        -- ave_sub_glycount.txt: averaged number of glycan atoms per a set of input residue <br />  
-       
+         - ave_sub_glysum.txt: averaged number of glycan atoms for input residue list <br />  
+         <img src="https://github.com/myungjinlee/GLYCO/blob/main/images/F8.png" width="400" height="70">
  Please report any bugs or questions to Myungjin Lee, Ph.D. (myungjin.lee@nih.gov)
       
