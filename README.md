@@ -68,7 +68,7 @@ GLYCO (GLYcan COverage) is a program to calculate glycan coverage of glycoprotei
        
         - Output<br /> 
           - frame_1_sub_glysum.txt: summation of number of glycan atoms of the input residue list. This value excludes the overlapped, redundant glycan atoms shared among a residue list. <br />
-          <img src="https://github.com/myungjinlee/GLYCO/blob/main/images/F5.png" width="200" height="70">
+           <img src="https://github.com/myungjinlee/GLYCO/blob/main/images/F5.png" width="200" height="70">
           
    - 3.2. Multiframes: If you have multiple frames of pdb files, you can submit multiple jobs in parallel.<br />
      - 3.1.1. Glycan coverage of overall protein surface residue - module: "all":<br />
@@ -97,6 +97,6 @@ GLYCO (GLYcan COverage) is a program to calculate glycan coverage of glycoprotei
        ```
        - Output<br /> 
          - ave_sub_glysum.txt: averaged number of glycan atoms for input residue list <br />  
-         <img src="https://github.com/myungjinlee/GLYCO/blob/main/images/F8.png" width="180" height="70">
+           <img src="https://github.com/myungjinlee/GLYCO/blob/main/images/F8.png" width="180" height="70">
  Please report any bugs or questions to Myungjin Lee, Ph.D. (myungjin.lee@nih.gov)
       
