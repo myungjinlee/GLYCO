@@ -38,13 +38,13 @@ GLYCO (GLYcan COverage) is a program to calculate glycan coverage of glycoprotei
        python3 glyco.py -pdb frame_1.pdb -cutoff 20 -module all -glycan BMA,AMA,BGL -freesasa /home/lee/freesasa -out_folder output 
        ```
        You can add arguments ```-probe```, ```-sur_cutoff```, ```-num_proc_in``` as needed. <br />
-       
+
        - Output<br /> 
          - frame_1_all_glycount.txt: number of glycan atoms per residue<br />
-          <img src="https://github.com/myungjinlee/GLYCO/blob/main/images/F1.png" width="300" height="70"> <br />
-         - frame_1_all_bfactor.pdb: number of glycans from “frame_1_all_glycount.txt” are embedded in the PDB as b-factors (You can visualize it with PyMOL.) <br />
+           <img src="https://github.com/myungjinlee/GLYCO/blob/main/images/F1.png" width="300" height="70"> 
+         - frame_1_all_bfactor.pdb: number of glycans from “frame_1_all_glycount.txt” are embedded in the PDB as b-factors (You can visualize it with PyMOL.) 
            <img src="https://github.com/myungjinlee/GLYCO/blob/main/images/F2.png" width="680" height="70">                         
-         - frame_1_all_glysum.txt: summation of number of glycans in the PDB <br />
+         - frame_1_all_glysum.txt: summation of number of glycans in the PDB 
            <img src="https://github.com/myungjinlee/GLYCO/blob/main/images/F3.png" width="200" height="70">
          - frame_1_all_outer.rsa: output of running Freesasa <br />
         GLYCO utilizes the 5th column (e.g., All-atoms, ABS) to evaluate if the residue is a surface residue or not <br />
