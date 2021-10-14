@@ -46,11 +46,11 @@ GLYCO (GLYcan COverage) is a program to calculate glycan coverage of glycoprotei
            <img src="https://github.com/myungjinlee/GLYCO/blob/main/images/F2.png" width="700" height="70">                         
          
          - frame_1_all_glysum.txt: summation of number of glycans in the PDB <br />
-           <img src="https://github.com/myungjinlee/GLYCO/blob/main/images/F3.png" width="200" height="70">
+           <img src="https://github.com/myungjinlee/GLYCO/blob/main/images/F3.png" width="250" height="70">
          
          - frame_1_all_outer.rsa: output of running Freesasa <br />
         GLYCO utilizes the 5th column (e.g., All-atoms, ABS) to evaluate if the residue is a surface residue or not <br />
-          <img src="https://github.com/myungjinlee/GLYCO/blob/main/images/F4.png" width="500" height="70"> <br />
+          <img src="https://github.com/myungjinlee/GLYCO/blob/main/images/F4.png" width="550" height="70"> <br />
           
      - 3.1.2. Glycan coverage of user selected residues - module: "sub":<br />
        
