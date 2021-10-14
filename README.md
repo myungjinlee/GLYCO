@@ -44,7 +44,7 @@ GLYCO (GLYcan COverage) is a program to calculate glycan coverage of glycoprotei
        -- frame_1_all_bfactor.pdb: PDB file with glycan atoms as b-factor (You can visualize it with PyMOL.) <br />
        -- frame_1_all_glysum.txt: <br />
        -- frame_1_all_outer.rsa: <br />
-       <img src="https://github.com/myungjinlee/GLYCO/blob/main/images/F1.png">
+       <img src="https://github.com/myungjinlee/GLYCO/blob/main/images/F1.png" width="100" height="100">
      - 3.1.2. Glycan coverage of user selected residues - module: "sub":<br />
        
        - Calculate number of glycan atoms of selected residues<br />
