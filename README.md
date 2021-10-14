@@ -9,7 +9,8 @@ GLYCO (GLYcan COverage) is a program to calculate glycan coverage of glycoprotei
     ALA ARG ASN ASP CYS GLN GLU GLY HSD HID HIS HIE ILE LEU LYS MET PHE PRO SER THR TRP TYR VAL<br />
 
 **2. Download GLYCO** <br />
-Download glyco.py<br />
+     Download glyco.py<br />
+<br />
 **3. Run GLYCO<br />**
    - GLYCO takes the following arguments. Depending on the module and number of frames you have, the required arguments vary:<br />
     
