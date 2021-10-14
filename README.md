@@ -30,8 +30,8 @@ GLYCO (GLYcan COverage) is a program to calculate glycan coverage of glycoprotei
    | -average         | (if multiple PDBs from the same structure) No input        | optional                     |
    
    
-     3.1. A single frame (PDB)<br />
-       3.1.1. Glycan coverage of overall protein surface residue -  module: "all":<br />
+   - 3.1. A single frame (PDB)<br />
+     - 3.1.1. Glycan coverage of overall protein surface residue -  module: "all":<br />
      
        - Count number of glycan atoms per all surface residues of the protein<br />
        ```
