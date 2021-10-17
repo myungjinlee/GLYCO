@@ -15,7 +15,7 @@ GLYCO (GLYcan COverage) is a program to calculate glycan coverage of glycoprotei
 <br />
 **3. Run GLYCO<br />**
    - GLYCO takes the following arguments. Depending on the module and number of frames you have, the required arguments vary:<br />
-   - (Command, Input, Output described below can be found in the folder "Examples".)
+    (Command, Input, Output described below can be found in the folder "Examples".)
     
    | Argument         | Input                                                      | Requirement                  |
    | ---------------- |------------------------------------------------------------| :----------------------------|
