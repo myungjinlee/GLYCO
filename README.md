@@ -63,9 +63,9 @@ GLYCO (GLYcan COverage) is a program to calculate glycan coverage of glycoprotei
        You can add argument ```-num_proc_in``` as needed. <br /><br />
          &nbsp; &nbsp; *residuelist.txt should be in the following format: residue name, chain ID, residue number<br />
             &nbsp; &nbsp; (residuelist.txt)<br />
-            &nbsp; &nbsp;  GLU&nbsp; C&nbsp; 102<br />
-            &nbsp; &nbsp;  THR&nbsp; C&nbsp; 128<br />
-            &nbsp; &nbsp;   ASN&nbsp; C&nbsp; 132<br />
+            &nbsp; &nbsp;  LEU&nbsp; A&nbsp;  95<br />
+            &nbsp; &nbsp;  VAL&nbsp; A&nbsp;  97<br />
+            &nbsp; &nbsp;  THR&nbsp; A&nbsp;  98<br />
 
         - Output<br /> 
           - frame_1_sub_glysum.txt: summation of number of glycan atoms of the input residue list. This value excludes the overlapped, redundant glycan atoms shared among a residue list. <br />
