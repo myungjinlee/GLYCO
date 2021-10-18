@@ -9,7 +9,7 @@ GLYCO (GLYcan COverage) is a program to calculate glycan coverage of glycoprotei
       - 1.3.1 Coordinate section of input PDB files should follow the standard ATOM/HETATM record format of PDB (http://www.wwpdb.org/documentation/file-format-content/format33/sect9.html) from column 1 to 54.<br />
       - 1.3.2 Protein residues in PDB files should be named as below. Especially, please check if your histidine is defined as one of below histidine names.<br />
     ALA ARG ASN ASP CYS GLN GLU GLY HSD HID HIS HIE ILE LEU LYS MET PHE PRO SER THR TRP TYR VAL<br />
-      - Example input files use mannose-5 glycosylated protein with glycan name BGL, BMA, AMA.<img src="https://github.com/myungjinlee/GLYCO/blob/main/images/man5.png" width="300" height="200"> <br />
+      - Example input files use mannose-5 glycosylated protein with glycan name BGL, BMA, AMA.
         (Command, Input, Output described below can be found in the folder "Examples".)<br />
         <img src="https://github.com/myungjinlee/GLYCO/blob/main/images/man5.png" width="300" height="200"> <br />
         
