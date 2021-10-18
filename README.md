@@ -11,7 +11,9 @@ GLYCO (GLYcan COverage) is a program to calculate glycan coverage of glycoprotei
     ALA ARG ASN ASP CYS GLN GLU GLY HSD HID HIS HIE ILE LEU LYS MET PHE PRO SER THR TRP TYR VAL<br />
       - Example input files use mannose-5 glycosylated protein with glycan name BGL, BMA, AMA.
         (Command, Input, Output described below can be found in the folder "Examples".)<br />
-        <img src="https://github.com/myungjinlee/GLYCO/blob/main/images/man5.png" width="550" height="200"> <br />
+        <img src="https://github.com/myungjinlee/GLYCO/blob/main/images/man5.png" width="300" height="300"> <br />
+        
+        
 **2. Download GLYCO** <br />
      Download glyco.py<br />
 <br />
