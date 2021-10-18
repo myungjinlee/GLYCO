@@ -67,7 +67,7 @@ GLYCO (GLYcan COverage) is a program to calculate glycan coverage of glycoprotei
          &nbsp; &nbsp; *residuelist.txt should be in the following format: residue name, chain ID, residue number<br />
             &nbsp; &nbsp; (residuelist.txt)<br />
             &nbsp; &nbsp;  LEU&nbsp; A&nbsp;  95<br />
-            &nbsp; &nbsp;  VAL&nbsp; A&nbsp;  97<br />
+            &nbsp; &nbsp;  VAL&nbsp; A&nbsp;  &nbsp;97<br />
             &nbsp; &nbsp;  THR&nbsp; A&nbsp;  98<br />
 
         - Output<br /> 
