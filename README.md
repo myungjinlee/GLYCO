@@ -89,7 +89,7 @@ GLYCO (GLYcan COverage) is a program to calculate glycan coverage of glycoprotei
          - ave_all_glycount.txt: averaged number of glycan atoms per surface residue over number of PDBs<br />
            <img src="https://github.com/myungjinlee/GLYCO/blob/main/images/F6.png" width="300" height="70">
          - ave_all_glysum.txt: averaged summation of number of glycans for all surface residues over number of PDBs <br /> 
-           <img src="https://github.com/myungjinlee/GLYCO/blob/main/images/F7.png" width="200" height="70">
+           <img src="https://github.com/myungjinlee/GLYCO/blob/main/images/F7.png" width="200"  height="70">
         
      - 3.2.2. Glycan coverage of user selected residues - module: "sub":<br />
        - Count number of glycan atoms per input residue
