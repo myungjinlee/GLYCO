@@ -4,7 +4,7 @@ GLYCO (GLYcan COverage) is a program to calculate glycan coverage of glycoprotei
 
 **1. Before you run GLYCO: There are some requirements you may have to check before running the program.<br />**
    - 1.1. FreeSASA(https://freesasa.github.io/) 
-   - 1.2. Python3 <br />
+   - 1.2. Python3 with modules (sys, os, pathlib, re, time, numpy, argparse, datetime, glob, fileinput, collections, multiprocessing, multiprocessing.pool, concurrent.futures)<br />
    - 1.3. Input: PDB of glycosylated protein
       - 1.3.1 Coordinate section of input PDB files should follow the standard ATOM/HETATM record format of PDB (http://www.wwpdb.org/documentation/file-format-content/format33/sect9.html) from column 1 to 54.<br />
       - 1.3.2 Protein residues in PDB files should be named as below. Especially, please check if your histidine is defined as one of below histidine names.<br />
