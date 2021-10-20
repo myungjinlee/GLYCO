@@ -75,8 +75,8 @@ GLYCO (GLYcan COverage) is a program to calculate glycan coverage of glycoprotei
             <img src="https://github.com/myungjinlee/GLYCO/blob/main/images/F5.png" width="200" height="70">
           
    - 3.2. Multiframes: If you have multiple frames of pdb files, you can submit multiple jobs in parallel.<br />
-     - 3.1.1. Glycan coverage of overall protein surface residue - module: "all":<br />
-       - Count number of glycan atoms per all surface residues of the proteinbr />
+     - 3.2.1. Glycan coverage of overall protein surface residue - module: "all":<br />
+       - Count number of glycan atoms per all surface residues of the protein <br />
         *Input PDBs should be named as PREFIX_INDEX.pdb (e.g., frame_1.pdb, frame_2.pdb) and placed in a folder.<br />
         *(num_proc_in x num_parallel) should not exceed the total/available number of CPUs in your system.<br />
        ```
@@ -92,7 +92,7 @@ GLYCO (GLYcan COverage) is a program to calculate glycan coverage of glycoprotei
          - ave_all_glysum.txt: averaged summation of number of glycans for all surface residues over number of PDBs <br /> 
            <img src="https://github.com/myungjinlee/GLYCO/blob/main/images/F7.png" width="200" height="70">
         
-     - 3.1.2. Glycan coverage of user selected residues - module: "sub":<br />
+     - 3.2.2. Glycan coverage of user selected residues - module: "sub":<br />
        - Count number of glycan atoms per input residue
          
        ```
