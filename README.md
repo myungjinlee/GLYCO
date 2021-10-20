@@ -13,7 +13,6 @@ GLYCO (GLYcan COverage) is a program to calculate glycan coverage of glycoprotei
         (Command, Input, Output described below can be found in the folder "Examples".)<br /><br />
         <img src="https://github.com/myungjinlee/GLYCO/blob/main/images/man5.png" width="350" height="230"><br />
         
-        
 **2. Download GLYCO** <br />
    - Download glyco.py<br /><br />
 
