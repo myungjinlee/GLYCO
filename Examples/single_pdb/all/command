@@ -1,1 +1,0 @@
-python3 glyco.py -pdb frame_1.pdb -cutoff 26 -sur_cutoff 30 -module all -glycan BMA,AMA,BGL -freesasa /data/leem25/software/freesasa/bin/freesasa  -out_folder output
