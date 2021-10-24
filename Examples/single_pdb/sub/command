@@ -1,0 +1,1 @@
+python3 glyco.py -pdb frame_1.pdb -cutoff 23 -sur_cutoff 30 -module sub -glycan BMA,AMA,BGL -residue residuelist.txt  -out_folder output 
