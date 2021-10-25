@@ -48,7 +48,7 @@ GLYCO (GLYcan COverage) is a program to calculate glycan coverage of glycoprotei
        - Output<br /> 
          - frame_1_all_glycount.txt: number of glycan atoms per residue<br />
            <img src="https://github.com/myungjinlee/GLYCO/blob/main/images/F1.png" width="300" height="70"> 
-         - frame_1_all_bfactor.pdb: number of glycans from “frame_1_all_glycount.txt” are embedded in the PDB as b-factors (You can visualize it with PyMOL.)<br /> 
+         - frame_1_all_bfactor.pdb: number of glycans from “frame_1_all_glycount.txt” are embedded in the PDB as B-factors (You can visualize it with PyMOL.)<br /> 
            <img src="https://github.com/myungjinlee/GLYCO/blob/main/images/F2.png" width="680" height="70">                         
          - frame_1_all_glysum.txt: summation of number of glycans in the PDB<br />
            <img src="https://github.com/myungjinlee/GLYCO/blob/main/images/F3.png" width="200" height="70">
@@ -85,7 +85,7 @@ GLYCO (GLYcan COverage) is a program to calculate glycan coverage of glycoprotei
        You can add arguments ```-probe```, ```-sur_cutoff``` as needed. <br />
        - Output<br /> 
          - frame_1..5_all_glycount.txt: number of glycan atoms per residue<br />
-         - frame_1..5_bfactor.pdb: number of glycans from “frame_1_all_glycount.txt” are embedded in the PDB as b-factors (You can visualize it with PyMOL.)<br /> 
+         - frame_1..5_bfactor.pdb: number of glycans from “frame_1_all_glycount.txt” are embedded in the PDB as B-factors (You can visualize it with PyMOL.)<br /> 
          - ave_all_glycount.txt: averaged number of glycan atoms per surface residue over number of PDBs<br />
            <img src="https://github.com/myungjinlee/GLYCO/blob/main/images/F6.png" width="300" height="70">
          - ave_all_glysum.txt: averaged summation of number of glycans for all surface residues over number of PDBs <br /> 
