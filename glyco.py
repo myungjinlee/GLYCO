@@ -453,7 +453,7 @@ def write_outputs(all_or_sub, final_dict, out_folder, prefix, origin_pdb):
             line = line.strip()
             if line.startswith('ATOM'):
                 origin_line = line
-                key = (str(line[17:21].strip()),str(line[21:22].strip()),str(line[22:26].strip()))
+                key = (str(line[17:21].strip()),str(line[21:22].strip()),str(line[22:28].strip()))
                 if key in final_dict.keys():
                     count = len(final_dict[key])
                     val = str('{:>6.2f}'.format(count))
