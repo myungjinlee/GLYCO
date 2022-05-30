@@ -4,7 +4,7 @@
 #-------------------------------------------------------------#
 # GLYCO
 #
-# Developed on 07/27/2021 and updated 01/28/2022
+# Developed on 07/27/2021 and updated 05/30/2022
 # Developed by Myungjin Lee, Ph.D and edittd by Mateo Reveiz
 # Please contact myungjin.lee@nih.gov for any questions/bugs.
 #-------------------------------------------------------------#
@@ -134,7 +134,7 @@ def gen_gly_dict(inpdb, input_glycan):
     print('PROGRESS: Generating a glycan dictionary') 
     outdict = {}
     for line in open(inpdb):
-        if line[0:4] == 'ATOM' or line[0:4] == 'HETA':
+        if line[0:4] == 'ATOM' or line[0:3] == 'HET':
             if line[17:21].strip() in input_glycan.split():
                 resname = line[17:21].strip()
                 chain = line[21].strip()
