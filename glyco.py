@@ -6,7 +6,7 @@
 #
 # Developed on 07/27/2021 and updated 01/28/2022
 # Developed by Myungjin Lee, Ph.D and edittd by Mateo Reveiz
-# Please contact myungjin.lee@nih.gov for any question or bug.
+# Please contact myungjin.lee@nih.gov for any questions/bugs.
 #-------------------------------------------------------------#
 
 import sys
