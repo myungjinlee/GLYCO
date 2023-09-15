@@ -1,4 +1,4 @@
-# GLYCO
+# GLYCO (version 1)
 
 GLYCO (GLYcan COverage) is a program to calculate glycan coverage of glycoproteins (e.g., number of glycan atoms per protein surface residues/epitope residues).
 
